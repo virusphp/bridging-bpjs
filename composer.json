@@ -1,0 +1,28 @@
+{
+    "name": "virusphp/brdging-bpjs",
+    "description": "Briding Bpjs Service",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "virusphp",
+            "email": "packercyber@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "nullpunkt/lz-string-php": "^1.3",
+        "guzzlehttp/guzzle": "7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Virusphp\\BrigingBpjs\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Virusphp\\BridingBpjs\\BridgingBpjsServiceProvider"
+            ]
+        }
+    }
+}
