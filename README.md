@@ -52,7 +52,7 @@ composer require virusphp/service-bpjs
 
 ## Changelog
 
-### 2021-06-17
+### 2021-09-14
 - v0.1-beta Upgraded codebase to be compatible to PHP 8.
 
 ### 2021-09-14 
