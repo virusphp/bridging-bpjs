@@ -45,17 +45,15 @@ return [
 ```php
 <?php
 
-use Vclaim\Bridging\Bpjs;
 use Vclaim\Bridging\BridgingBpjs;
 
-Class SomeController extends Bpjs
+Class SomeController
 {
 	protected $bridging;
 
 	public function __construct()
 	{
-		parent::__construct();
-		$this->bridging = new BridgingBpjs($this->consid, $this->timestamp, $this->signature, $this->key);
+		$this->bridging = new BridgingBpjs();
 	}
 
 	// Example To use get Referensi diagnosa
@@ -69,6 +67,9 @@ Class SomeController extends Bpjs
 ```
 
 ## Changelog
+
+### 2021-09-15
+- v0.5-beta Refactor and update documentation
 
 ### 2021-09-15
 - v0.2-beta Refactor code and add documentation readme
