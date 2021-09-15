@@ -33,8 +33,8 @@ return [
 ```php
 <?php
 
-use Virusphp\BridgingBpjs\Bpjs;
-use Virusphp\BridgingBpjs\BridgingBpjs;
+use Vclaim\Bridging\Bpjs;
+use Vclaim\Bridging\BridgingBpjs;
 
 Class SomeController extends Bpjs
 {
