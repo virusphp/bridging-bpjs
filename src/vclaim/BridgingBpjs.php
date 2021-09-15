@@ -6,7 +6,6 @@ use Vclaim\Bridging\GenerateBpjs;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7;
 use GuzzleHttp\Exception\RequestException;
-use function GuzzleHttp\Psr7\str;
 
 class BridgingBpjs 
 {
