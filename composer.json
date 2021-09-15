@@ -28,5 +28,10 @@
                 "Vclaim\\Bridging\\BridgingBpjsServiceProvider"
             ]
         }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "@php artisan vendor:publish "
+        ]
     }
 }

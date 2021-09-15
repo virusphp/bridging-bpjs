@@ -11,6 +11,18 @@ untuk akses ke service bpjs baik versi 1 maupun versi 2 yang akan datang, semoga
 - Decrypt String
 - Decompress with (Lz-String)
 
+## Installation
+
+### Composer
+```cmd
+composer require virusphp/bridging-bpjs
+```
+
+## Publish Config
+```cmd
+php artisan vendor:publish --provider="Vclaim\Bridging\BridgingBpjsServiceProvider" --tag=config
+```
+
 ## Usage
 ```php
 //Confirasi Env
@@ -54,18 +66,6 @@ Class SomeController extends Bpjs
 		return $this->bridging->getRequest($endpoint);
 	}
 }
-```
-
-## Installation
-
-### Composer
-```cmd
-composer require virusphp/bridging-bpjs
-```
-
-## Publish Config
-```cmd
-php artisan vendor:publish --provider="Vclaim\Bridging\BridgingBpjsServiceProvider" --tag=config
 ```
 
 ## Changelog

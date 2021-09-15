@@ -52,9 +52,9 @@ class BridgingBpjs
             $result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(), $this->key);
             return $result;
         } catch (RequestException $e) {
-            $result = str($e->getRequest());
+            $result = Psr7\str($e->getRequest());
             if ($e->hasResponse()) {
-                $result = str($e->getResponse());
+                $result = Psr7\str($e->getResponse());
             }
         } 
     }
