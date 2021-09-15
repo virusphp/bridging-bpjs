@@ -2,7 +2,7 @@
 
 namespace Vclaim\Bridging;
 
-use Virusphp\BridingBpjs\GenerateBpjs;
+use Vclaim\Bridging\GenerateBpjs;
 
 class Bpjs
 {

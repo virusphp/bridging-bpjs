@@ -1,13 +1,12 @@
 <?php
 
-namespace Virusphp\BridingBpjs;
+namespace Vclaim\Bridging;
 
 use LZCompressor\LZString;
 date_default_timezone_set('UTC');
 
 class GenerateBpjs
 {
-
 	public CONST ENCRYPT_METHOD = 'AES-256-CBC';
 
 	public static function generateSignature($conId, $secId)

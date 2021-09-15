@@ -1,8 +1,8 @@
 <?php
 
-namespace Virusphp\BridingBpjs;
+namespace Vclaim\Bridging;
 
-use Virusphp\BridingBpjs\GenerateBpjs;
+use Vclaim\Bridging\GenerateBpjs;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7;
 use GuzzleHttp\Exception\RequestException;
@@ -22,7 +22,7 @@ class BridgingBpjs
 
 	protected $client;
 
-	public function __construct($consid, $timestamp, $signature, $key)
+	public function __construct($consid, $timestamp, $signature,$key)
 	{
 		$this->key = $key;
 		
