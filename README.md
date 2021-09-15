@@ -71,6 +71,9 @@ php artisan vendor:publish --provider="Vclaim\Bridging\BridgingBpjsServiceProvid
 ## Changelog
 
 ### 2021-09-14
+- v0.2-beta Refactor code and add documentation readme
+
+### 2021-09-14
 - v0.1-beta Upgraded codebase to be compatible to PHP 8.
 
 ### 2021-09-14 
