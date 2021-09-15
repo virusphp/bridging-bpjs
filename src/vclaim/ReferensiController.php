@@ -2,7 +2,7 @@
 
 namespace Vclaim\Bridging;
 
-Class ReferensiController extends Bpjs
+Class ReferensiController 
 {
 	protected $bridging;
 	/**
@@ -18,8 +18,7 @@ Class ReferensiController extends Bpjs
 	 */
 	public function __construct()
 	{
-		parent::__construct();
-		$this->bridging = new BridgingBpjs($this->consid, $this->timestamp, $this->signature, $this->key);
+		$this->bridging = new BridgingBpjs();
 	}
 
 	public function getDiagnosa($kode)

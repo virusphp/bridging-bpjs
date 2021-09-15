@@ -4,39 +4,17 @@ namespace Vclaim\Bridging;
 
 use Vclaim\Bridging\GenerateBpjs;
 use GuzzleHttp\Client;
-use GuzzleHttp\Psr7;
 use GuzzleHttp\Exception\RequestException;
+use Vclaim\Bridging\Bpjs;
 
 class BridgingBpjs 
 {
-	protected $key;
-
-	protected $header;
-
-	protected $headers;
-
-	protected $bpjs_endpoint;
-
-	protected $urlencode;
+    use Bpjs;
 
 	protected $client;
 
-	public function __construct($consid, $timestamp, $signature,$key)
+	public function __construct()
 	{
-		$this->key = $key;
-		
-		$this->urldecode = array('Content-Type' => 'Application/x-www-form-urlencoded');
-
-		$this->header = [
-			'X-cons-id'   => $consid,
-			'X-timestamp' => $timestamp,
-			'X-signature' => $signature
-		];
-
-		$this->headers = array_merge($this->header, $this->urldecode);
-
-		$this->bpjs_url = config('bpjs.api.endpoint');
-
 		$this->client = new Client([
 			'verify' => true,
 			'cookie' => true,
@@ -46,9 +24,10 @@ class BridgingBpjs
 	public function getRequest($endpoint)
     {
         try {
-            $url = $this->bpjs_url . $endpoint;
-            $response = $this->client->get($url, ['headers' => $this->header]);
-            $result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(), $this->key);
+            $url = $this->setServiceApi() . $endpoint;
+            // dd($this->setHeaders(), $this->setSignature());
+            $response = $this->client->get($url, ['headers' => $this->setHeader()]);
+            $result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(), $this->setKey());
             return $result;
         } catch (RequestException $e) {
             $result = $e->getRequest();
@@ -62,8 +41,8 @@ class BridgingBpjs
     {
         $data = file_get_contents("php://input");
         try {
-            $url = $this->bpjs_url . $endpoint;
-            $response = $this->client->post($url, ['headers' => $this->headers, 'body' => $data]);
+            $url = $this->setServiceApi() . $endpoint;
+            $response = $this->client->post($url, ['headers' => $this->setHeaders(), 'body' => $data]);
 			$result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(), $this->key);
             return $result();
         } catch (RequestException $e) {

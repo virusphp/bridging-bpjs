@@ -4,20 +4,56 @@ namespace Vclaim\Bridging;
 
 use Vclaim\Bridging\GenerateBpjs;
 
-class Bpjs
+trait Bpjs
 {
-	protected $consid;
-    protected $seckey;
-	protected $timestamp;
-	protected $signature;
-	protected $key;
 
-	public function __construct()
+	public function setConsid()
 	{
-        $this->consid    = config('bpjs.api.consid');
-        $this->seckey    = config('bpjs.api.seckey');
-        $this->timestamp = GenerateBpjs::bpjsTimestamp();
-        $this->key       = GenerateBpjs::keyString($this->consid, $this->seckey);
-        $this->signature = GenerateBpjs::generateSignature($this->consid,$this->seckey);
+        return config('bpjs.api.consid');
 	}
+
+	public function setSeckey()
+	{
+        return config('bpjs.api.seckey');
+	}
+
+	public function setTimestamp()
+	{
+        return GenerateBpjs::bpjsTimestamp();
+	}
+
+	public function setSignature()
+	{
+        return GenerateBpjs::generateSignature($this->setConsid(),$this->setSeckey());
+	}
+
+	public function setKey()
+	{
+        return GenerateBpjs::keyString($this->setConsid(), $this->setSeckey());
+	}
+
+	public function setUrlEncode()
+	{
+		return array('Content-Type' => 'Application/x-www-form-urlencoded');
+	}
+
+	public function setHeader()
+	{
+		return [
+			'X-cons-id'   => $this->setConsid(),
+			'X-timestamp' => $this->setTimestamp(),
+			'X-signature' => $this->setSignature()
+		];
+	}
+
+	public function setHeaders()
+	{
+		return array_merge($this->setHeader(), $this->setUrlEncode());
+	}
+
+	public function setServiceApi()
+	{
+		return config('bpjs.api.endpoint'); 
+	}
+
 }
