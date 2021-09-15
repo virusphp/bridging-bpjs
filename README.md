@@ -3,8 +3,21 @@ Service-Bridging
 Service-bridging adalah sebuah packeges di desain untuk mempermudah pengguna framework php untuk melakukan generate signature maupun token 
 untuk akses ke service bpjs baik versi 1 maupun versi 2 yang akan datang, semoga packages ini dapat membantu teman teman dalam melakukan develop terhadap perkembangan service bpjs kesehatan
 
+## FEATURE
+- Custome Url
+- Generate Signature
+- Generate Timestamp Bpjs
+- Generate keyString
+- Decrypt String
+- Decompress with (Lz-String)
+
 ## Usage
 ```php
+//Confirasi Env
+API_BPJS=https://dvlp.bpjs-kesehatan.go.id/vclaim-rest-1.1/
+CONS_ID=xxxxx
+SECRET_KEY=xxxx
+
 <?php
 // configurasi config
 return [
