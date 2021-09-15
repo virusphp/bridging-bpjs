@@ -63,6 +63,11 @@ Class SomeController extends Bpjs
 composer require virusphp/service-bpjs
 ```
 
+## Publish Config
+```cmd
+php artisan vendor:publish --provider="Vclaim\Bridging\BridgingBpjsServiceProvider" --tag=config
+```
+
 ## Changelog
 
 ### 2021-09-14

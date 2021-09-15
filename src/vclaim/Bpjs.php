@@ -1,6 +1,6 @@
 <?php
 
-namespace Virusphp\BridingBpjs;
+namespace Vclaim\Bridging;
 
 use Virusphp\BridingBpjs\GenerateBpjs;
 

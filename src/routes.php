@@ -1,7 +1,7 @@
 <?php
 
-use Virusphp\BridingBpjs\GenerateBpjs;
-use Virusphp\BridingBpjs\ReferensiController;
+use Vclaim\Bridging\GenerateBpjs;
+use Vclaim\Bridging\ReferensiController;
 
 Route::get('sample', function() {
 	$generate = new GenerateBpjs;
