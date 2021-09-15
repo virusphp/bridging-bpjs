@@ -52,9 +52,9 @@ class BridgingBpjs
             $result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(), $this->key);
             return $result;
         } catch (RequestException $e) {
-            $result = Psr7\str($e->getRequest());
+            $result = $e->getRequest();
             if ($e->hasResponse()) {
-                $result = Psr7\str($e->getResponse());
+                $result = $e->getResponse();
             }
         } 
     }
@@ -68,9 +68,9 @@ class BridgingBpjs
 			$result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(), $this->key);
             return $result();
         } catch (RequestException $e) {
-            $result = Psr7\str($e->getRequest());
+            $result =$e->getRequest();
             if ($e->hasResponse()) {
-                $result = str($e->getResponse());
+                $result = $e->getResponse();
             }
         } 
     }
