@@ -70,7 +70,7 @@ php artisan vendor:publish --provider="Vclaim\Bridging\BridgingBpjsServiceProvid
 
 ## Changelog
 
-### 2021-09-14
+### 2021-09-15
 - v0.2-beta Refactor code and add documentation readme
 
 ### 2021-09-14
