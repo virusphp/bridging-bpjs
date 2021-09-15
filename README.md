@@ -60,7 +60,7 @@ Class SomeController extends Bpjs
 
 ### Composer
 ```cmd
-composer require virusphp/service-bpjs
+composer require virusphp/bridging-bpjs
 ```
 
 ## Publish Config
