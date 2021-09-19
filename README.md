@@ -52,7 +52,7 @@ return [
 
 ```php
 <?php
-
+// Example controller (Laravel 7 ke atas)
 use Vclaim\Bridging\BridgingBpjs;
 
 Class SomeController
@@ -75,6 +75,9 @@ Class SomeController
 ```
 
 ## Changelog
+
+### 2021-09-19
+- v0.6-beta Refactor and new fitur bridging kemkes
 
 ### 2021-09-15
 - v0.5-beta Refactor and update documentation
