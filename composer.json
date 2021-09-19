@@ -11,12 +11,14 @@
     "minimum-stability": "beta",
     "require": {
         "php": "^7.2.5",
+        "guzzlehttp/guzzle": "^7.0.1",
         "nullpunkt/lz-string-php": "^1.3",
-        "guzzlehttp/guzzle": "^7.0.1"
+        "vlucas/phpdotenv": "^5.3"
     },
     "autoload": {
         "psr-4": {
-            "Vclaim\\Bridging\\": "src/Vclaim"
+            "Vclaim\\Bridging\\": "src/vclaim",
+            "Kemkes\\Bridging\\": "src/kemkes"
         }
     },
     "config": {
