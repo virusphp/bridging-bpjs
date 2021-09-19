@@ -52,7 +52,7 @@ return [
 
 ```php
 <?php
-// Example controller (Laravel 7 ke atas)
+// Example Controller bridging to Vclaim BPJS  (Laravel 7 ke atas)
 use Vclaim\Bridging\BridgingBpjs;
 
 Class SomeController
@@ -69,6 +69,30 @@ Class SomeController
 	public function getDiagnosa($kode)
 	{
 		$endpoint = 'referensi/diagnosa/'. $kode;
+		return $this->bridging->getRequest($endpoint);
+	}
+}
+```
+
+```php
+<?php
+// Example Controller bridging to SIRS Kemkes  (Laravel 7 ke atas)
+use Kemkes\Bridging\BridgingKemkes;
+
+Class SomeController
+{
+	protected $bridging;
+
+	public function __construct()
+	{
+		$this->bridging = new BridgingKemkes();
+	}
+
+	// Example To use get Referensi diagnosa
+	// Name of Method example
+	public function getFasyankes($kode)
+	{
+		$endpoint = 'Fasyankes'. $kode;
 		return $this->bridging->getRequest($endpoint);
 	}
 }
