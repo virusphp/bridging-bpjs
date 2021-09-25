@@ -55,7 +55,7 @@ class GenerateBpjs
 	public static function responseBpjsV2($dataJson, $key)
 	{
 		$result = json_decode($dataJson);
-		if ($result->metaData->code == "200" && !isset($result->response->poli)) {
+		if ($result->metaData->code == "200" && is_string($result->response)) {
             return self::doDecompress($result, $key);
         }
         return json_encode($result);
