@@ -101,6 +101,9 @@ Class SomeController
 ## Changelog
 
 ### 2021-09-19
+- v0.7-beta fix bug minor both briding old and new version
+
+### 2021-09-19
 - v0.6-beta Refactor and new fitur bridging kemkes
 
 ### 2021-09-15
