@@ -71,9 +71,10 @@ class GenerateBpjs
 
 	protected static function mappingResponse($metaData, $response, $key)
 	{
-		return [
-            $metaData,
-            json_decode(self::decompress(self::stringDecrypt($key, $response)), true)
+		$data = [
+            "metaData" => $metaData,
+            "response" => json_decode(self::decompress(self::stringDecrypt($key, $response)), true)
         ];
+		return $data;
 	}
 }

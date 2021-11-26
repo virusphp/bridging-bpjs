@@ -6,15 +6,14 @@ use Vclaim\Bridging\GenerateBpjs;
 
 trait Bpjs
 {
-
 	public function setConsid()
 	{
-        return config('bpjs.api.consid');
+		return getenv('CONS_ID');
 	}
 
 	public function setSeckey()
 	{
-        return config('bpjs.api.seckey');
+        return getenv('SECRET_KEY');
 	}
 
 	public function setTimestamp()
@@ -32,9 +31,19 @@ trait Bpjs
         return GenerateBpjs::keyString($this->setConsid(), $this->setSeckey());
 	}
 
+	public function setUserKey()
+	{
+		return getenv('USER_KEY');
+	}
+
 	public function setUrlEncode()
 	{
 		return array('Content-Type' => 'Application/x-www-form-urlencoded');
+	}
+
+	public function setUrlJson()
+	{
+		return array('Content-Type' => 'Application/Json');
 	}
 
 	public function setHeader()
@@ -42,7 +51,8 @@ trait Bpjs
 		return [
 			'X-cons-id'   => $this->setConsid(),
 			'X-timestamp' => $this->setTimestamp(),
-			'X-signature' => $this->setSignature()
+			'X-signature' => $this->setSignature(),
+			'user_key'    => $this->setUserKey()
 		];
 	}
 
@@ -51,9 +61,14 @@ trait Bpjs
 		return array_merge($this->setHeader(), $this->setUrlEncode());
 	}
 
+	public function setHeadersJson()
+	{
+		return array_merge($this->setHeader(), $this->setUrlJson());
+	}
+
 	public function setServiceApi()
 	{
-		return config('bpjs.api.endpoint'); 
+		return getenv('API_BPJS');
 	}
 
 }

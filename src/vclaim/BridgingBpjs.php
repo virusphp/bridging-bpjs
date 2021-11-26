@@ -25,8 +25,8 @@ class BridgingBpjs
     {
         try {
             $url = $this->setServiceApi() . $endpoint;
-            // dd($this->setHeaders(), $this->setSignature());
             $response = $this->client->get($url, ['headers' => $this->setHeader()]);
+            // return $response->getBody()->getContents();
             $result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(), $this->setKey());
             return $result;
         } catch (RequestException $e) {
@@ -43,8 +43,8 @@ class BridgingBpjs
         try {
             $url = $this->setServiceApi() . $endpoint;
             $response = $this->client->post($url, ['headers' => $this->setHeaders(), 'body' => $data]);
-			$result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(), $this->key);
-            return $result();
+			$result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(),$this->setKey());
+            return $result;
         } catch (RequestException $e) {
             $result =$e->getRequest();
             if ($e->hasResponse()) {

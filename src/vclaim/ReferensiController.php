@@ -2,6 +2,8 @@
 
 namespace Vclaim\Bridging;
 
+use Symfony\Component\HttpFoundation\Request;
+
 Class ReferensiController 
 {
 	protected $bridging;
@@ -25,5 +27,24 @@ Class ReferensiController
 	{
 		$endpoint = 'referensi/diagnosa/'. $kode;
 		return $this->bridging->getRequest($endpoint);
+	}
+
+	public function getPoliKontnrol($jnsKontrol, $nomor, $tglRencana)
+	{
+		$endpoint = 'RencanaKontrol/ListSpesialistik/JnsKontrol/'.$jnsKontrol. '/nomor/'.$nomor.'/TglRencanaKontrol/'.$tglRencana;
+		return $this->bridging->getRequest($endpoint);
+	}
+
+	public function getDokter($pelayanan, $tglPelayanan, $spesialis)
+	{
+		$endpoint = 'referensi/dokter/pelayanan/'.$pelayanan.'/tglPelayanan/'.$tglPelayanan.'/Spesialis/'.$spesialis;
+		return $this->bridging->getRequest($endpoint);
+	}
+
+	public function postSEP(Request $request)
+	{
+		$endpoint = 'SEP/2.0/insert';
+		$data = $request->all();
+		return $this->bridging->postRequest($endpoint,$data);
 	}
 }
