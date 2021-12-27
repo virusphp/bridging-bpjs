@@ -28,7 +28,8 @@ php artisan vendor:publish --provider="Vclaim\Bridging\BridgingBpjsServiceProvid
 //Confirasi .env untuk vclaim bpjs
 API_BPJS=https://dvlp.bpjs-kesehatan.go.id/vclaim-rest-1.1/
 CONS_ID=xxxxx
-SECRET_KEY=xxxx
+SECRET_KEY=xxxX
+USER_KEY=xxxx
 
 //Configurasi .env untuk sirs kemkes
 USER_ID=xxxx
@@ -45,6 +46,7 @@ return [
 		'endpoint'  => env('API_BPJS','ENDPOINT-KAMU'),
 		'consid'  => env('CONS_ID','CONSID-KAMU'),
 		'seckey' => env('SECRET_KEY', 'SECRET-KAMU'),
+		'user_key' => env('USER_KEY', 'SECRET-KAMU'),
 	]
 ]
 
