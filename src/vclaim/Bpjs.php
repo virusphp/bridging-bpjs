@@ -28,6 +28,11 @@ trait Bpjs
 		return getenv('API_BPJS');
 	}
 
+	public function setUserKey()
+	{
+		return getenv('USER_KEY');		
+	}
+
 	public function setTimestamp()
 	{
         return GenerateBpjs::bpjsTimestamp();
@@ -53,7 +58,8 @@ trait Bpjs
 		return [
 			'X-cons-id'   => $this->setConsid(),
 			'X-timestamp' => $this->setTimestamp(),
-			'X-signature' => $this->setSignature()
+			'X-signature' => $this->setSignature(),
+			'user_key'    => $this->setUserKey(),
 		];
 	}
 
