@@ -102,6 +102,12 @@ Class SomeController
 
 ## Changelog
 
+### 2021-12-27
+- v1.0 Add user_key to bridging versi 2 and fix bug
+
+### 2021-11-22
+- v0.8-beta fix bug minor 
+
 ### 2021-09-19
 - v0.7-beta fix bug minor both briding old and new version
 
