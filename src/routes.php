@@ -28,9 +28,21 @@ Route::get('rencana/listpoli/jnskontrol/{jnsKontrol}/nomor/{nomor}/tglrencana/{t
 	return $referensi;
 });
 
-Route::get('/dpjp/pelayanan/{pelayanan}/tglpelayanan/{tglpelayanan}/spesialis/{spesialis}', function($pelayanan, $tglpelayanan, $spesialis) {
+Route::get('dpjp/pelayanan/{pelayanan}/tglpelayanan/{tglpelayanan}/spesialis/{spesialis}', function($pelayanan, $tglpelayanan, $spesialis) {
 	$referensi = new ReferensiController();
 	$referensi = $referensi->getDokter($pelayanan, $tglpelayanan, $spesialis);
+	return $referensi;
+});
+
+Route::get('kontrol/list/tglawal/{tglawal}/tglakhir/{tglakhir}/filter/{tglkontrol}', function($tglawal, $tglakhir, $tglkontrol) {
+	$referensi = new ReferensiController();
+	$referensi = $referensi->getDataSUrat($tglawal, $tglakhir, $tglkontrol);
+	return $referensi;
+});
+
+Route::get('kontrol/dokter/jnskontrol/{jnskontrol}/poli/{poli}/tglkontrol/{tglkontrol}', function($jnsKontrol, $kodePoli, $tglKontrol) {
+	$referensi = new ReferensiController();
+	$referensi = $referensi->getJadwalDokter($jnsKontrol, $kodePoli, $tglKontrol);
 	return $referensi;
 });
 
@@ -40,3 +52,34 @@ Route::post('create/sep', function(Request $request) {
 	return $referensi;
 });
 
+Route::post('update/pulang', function(Request $request) {
+	$referensi = new ReferensiController($request);
+	$referensi = $referensi->updatePulang($request);
+	return $referensi;
+});
+
+Route::post('create/suratperintah', function(Request $request) {
+	$referensi = new ReferensiController($request);
+	$referensi = $referensi->postSuratPerintah($request);
+	return $referensi;
+});
+
+Route::post('create/suratkontrol', function(Request $request) {
+	$referensi = new ReferensiController($request);
+	$referensi = $referensi->postSuratKontrol($request);
+	return $referensi;
+});
+
+Route::post('cari/suratkontrol/{nosurat}', function($nosurat) {
+	$referensi = new ReferensiController();
+	$referensi = $referensi->postCariSurat($nosurat);
+	return $referensi;
+});
+
+
+Route::get('fasyankesx', function() {
+	dd("KOK GAK SAMPE SINI");
+	// $tempattidur = new TempatTidurController();
+	// $tempattidur = $tempattidur->getTempatTidur();
+	// return $tempattidur;
+});

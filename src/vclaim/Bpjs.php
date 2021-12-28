@@ -3,17 +3,29 @@
 namespace Vclaim\Bridging;
 
 use Vclaim\Bridging\GenerateBpjs;
+use Dotenv\Dotenv;
 
 trait Bpjs
 {
+	public function __construct()
+	{
+		$dotenv = Dotenv::createUnsafeImmutable(__DIR__);
+		$dotenv->load();	
+	}
+
 	public function setConsid()
 	{
-		return getenv('CONS_ID');
+        return getenv('CONS_ID');
 	}
 
 	public function setSeckey()
 	{
         return getenv('SECRET_KEY');
+	}
+
+	public function setServiceApi()
+	{
+		return getenv('API_BPJS');
 	}
 
 	public function setTimestamp()
@@ -59,16 +71,6 @@ trait Bpjs
 	public function setHeaders()
 	{
 		return array_merge($this->setHeader(), $this->setUrlEncode());
-	}
-
-	public function setHeadersJson()
-	{
-		return array_merge($this->setHeader(), $this->setUrlJson());
-	}
-
-	public function setServiceApi()
-	{
-		return getenv('API_BPJS');
 	}
 
 }

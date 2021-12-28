@@ -41,10 +41,50 @@ Class ReferensiController
 		return $this->bridging->getRequest($endpoint);
 	}
 
+	public function postSuratPerintah(Request $request)
+	{
+		$endpoint = 'RencanaKontrol/InsertSPRI';
+		$data = $request->all();
+		return $this->bridging->postRequest($endpoint,$data);
+	}
+
+	public function postSuratKontrol(Request $request)
+	{
+		$endpoint = 'RencanaKontrol/insert';
+		$data = $request->all();
+		return $this->bridging->postRequest($endpoint,$data);
+	}
+
+	public function getCariSurat($nosurat)
+	{
+		$endpoint = 'RencanaKontrol/noSuratKontrol/'.$nosurat;
+		return $this->bridging->getRequest($endpoint);
+	}
+
+	public function getDataSUrat($tglawal, $tglakhir, $tglkontrol)
+	{
+		$endpoint = 'RencanaKontrol/ListRencanaKontrol/tglAwal/'.$tglawal.'/tglAkhir/'.$tglakhir.'/filter/'.$tglkontrol;
+		return $this->bridging->getRequest($endpoint);
+	}
+
+	public function getJadwalDokter($jnsKontrol, $kodePoli, $tglKontrol)
+	{
+		// dd($jnsKontrol,$kodePoli, $tglKontrol);
+		$endpoint = 'RencanaKontrol/JadwalPraktekDokter/JnsKontrol/'.$jnsKontrol.'/KdPoli/'.$kodePoli.'/TglRencanaKontrol/'.$tglKontrol;
+		return $this->bridging->getRequest($endpoint);
+	}
+
 	public function postSEP(Request $request)
 	{
 		$endpoint = 'SEP/2.0/insert';
 		$data = $request->all();
 		return $this->bridging->postRequest($endpoint,$data);
+	}
+
+	public function updatePulang(Request $request)
+	{
+		$endpoint = "SEP/2.0/updtglplg";
+		$data = $request->all();
+		return $this->bridging->putRequest($endpoint,$data);
 	}
 }

@@ -24,14 +24,22 @@ php artisan vendor:publish --provider="Vclaim\Bridging\BridgingBpjsServiceProvid
 ```
 
 ## Usage
-```php
-//Confirasi Env
+```env
+//Confirasi .env untuk vclaim bpjs
 API_BPJS=https://dvlp.bpjs-kesehatan.go.id/vclaim-rest-1.1/
 CONS_ID=xxxxx
 SECRET_KEY=xxxx
 
+//Configurasi .env untuk sirs kemkes
+USER_ID=xxxx
+PASS_ID=xxxx
+API_KEMKES=http://sirs.kemkes.go.id/fo/index.php/
+
+```
+
+```php
 <?php
-// configurasi config
+// configurasi config (Support laravel 7 ke atas)
 return [
 	'api' => [
 		'endpoint'  => env('API_BPJS','ENDPOINT-KAMU'),
@@ -44,7 +52,7 @@ return [
 
 ```php
 <?php
-
+// Example Controller bridging to Vclaim BPJS  (Laravel 7 ke atas)
 use Vclaim\Bridging\BridgingBpjs;
 
 Class SomeController
@@ -66,7 +74,37 @@ Class SomeController
 }
 ```
 
+```php
+<?php
+// Example Controller bridging to SIRS Kemkes  (Laravel 7 ke atas)
+use Kemkes\Bridging\BridgingKemkes;
+
+Class SomeController
+{
+	protected $bridging;
+
+	public function __construct()
+	{
+		$this->bridging = new BridgingKemkes();
+	}
+
+	// Example To use get Referensi diagnosa
+	// Name of Method example
+	public function getFasyankes($kode)
+	{
+		$endpoint = 'Fasyankes'. $kode;
+		return $this->bridging->getRequest($endpoint);
+	}
+}
+```
+
 ## Changelog
+
+### 2021-09-19
+- v0.7-beta fix bug minor both briding old and new version
+
+### 2021-09-19
+- v0.6-beta Refactor and new fitur bridging kemkes
 
 ### 2021-09-15
 - v0.5-beta Refactor and update documentation

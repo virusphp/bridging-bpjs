@@ -1,15 +1,14 @@
 <?php
 
-namespace Vclaim\Bridging;
+namespace Kemkes\Bridging;
 
-use Vclaim\Bridging\GenerateBpjs;
+use Kemkes\Bridging\Kemkes;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
-use Vclaim\Bridging\Bpjs;
 
-class BridgingBpjs 
+class BridgingKemkes
 {
-    use Bpjs;
+    use Kemkes;
 
 	protected $client;
 
@@ -21,13 +20,12 @@ class BridgingBpjs
 		]);
 	}
 
-	public function getRequest($endpoint)
+    public function getRequest($endpoint)
     {
         try {
             $url = $this->setServiceApi() . $endpoint;
             $response = $this->client->get($url, ['headers' => $this->setHeader()]);
-            // return $response->getBody()->getContents();
-            $result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(), $this->setKey());
+			$result = $response->getBody()->getContents();
             return $result;
         } catch (RequestException $e) {
             $result = $e->getRequest();
@@ -43,8 +41,8 @@ class BridgingBpjs
         try {
             $url = $this->setServiceApi() . $endpoint;
             $response = $this->client->post($url, ['headers' => $this->setHeaders(), 'body' => $data]);
-			$result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(),$this->setKey());
-            return $result;
+			$result = $response->getBody()->getContents();
+            return $result();
         } catch (RequestException $e) {
             $result =$e->getRequest();
             if ($e->hasResponse()) {
@@ -53,14 +51,13 @@ class BridgingBpjs
         } 
     }
 
-    public function putRequest($endpoint, $data)
+     public function putRequest($endpoint, $data)
     {
-        $data = file_get_contents("php://input");
         try {
             $url = $this->setServiceApi() . $endpoint;
-            $response = $this->client->put($url, ['headers' => $this->setHeaders(), 'body' => $data]);
-			$result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(),$this->setKey());
-            return $result;
+            $response = $this->client->post($url, ['headers' => $this->setHeaders(), 'body' => $data]);
+			$result = $response->getBody()->getContents();
+            return $result();
         } catch (RequestException $e) {
             $result =$e->getRequest();
             if ($e->hasResponse()) {
@@ -68,4 +65,21 @@ class BridgingBpjs
             }
         } 
     }
+
+    public function deleteRequest($endpoint, $data)
+    {
+        $data = file_get_contents("php://input");
+        try {
+            $url = $this->setServiceApi() . $endpoint;
+            $response = $this->client->post($url, ['headers' => $this->setHeaders(), 'body' => $data]);
+			$result = $response->getBody()->getContents();
+            return $result();
+        } catch (RequestException $e) {
+            $result = Psr7\str($e->getRequest());
+            if ($e->hasResponse()) {
+                $result = Psr7\str($e->getResponse());
+            }
+        } 
+    }
+
 }
