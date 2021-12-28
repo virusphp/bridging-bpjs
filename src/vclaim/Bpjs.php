@@ -28,6 +28,11 @@ trait Bpjs
 		return getenv('API_BPJS');
 	}
 
+	public function setUserKey()
+	{
+		return getenv('USER_KEY');		
+	}
+
 	public function setTimestamp()
 	{
         return GenerateBpjs::bpjsTimestamp();
@@ -41,11 +46,6 @@ trait Bpjs
 	public function setKey()
 	{
         return GenerateBpjs::keyString($this->setConsid(), $this->setSeckey());
-	}
-
-	public function setUserKey()
-	{
-		return getenv('USER_KEY');
 	}
 
 	public function setUrlEncode()

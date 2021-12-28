@@ -59,7 +59,27 @@ class BridgingBpjs
         try {
             $url = $this->setServiceApi() . $endpoint;
             $response = $this->client->put($url, ['headers' => $this->setHeaders(), 'body' => $data]);
+<<<<<<< HEAD
 			$result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(),$this->setKey());
+=======
+			$result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(), $this->key);
+            return $result;
+        } catch (RequestException $e) {
+            $result =$e->getRequest();
+            if ($e->hasResponse()) {
+                $result = $e->getResponse();
+            }
+        } 
+    }
+
+     public function deleteRequest($endpoint, $data)
+    {
+        $data = file_get_contents("php://input");
+        try {
+            $url = $this->setServiceApi() . $endpoint;
+            $response = $this->client->delete($url, ['headers' => $this->setHeaders(), 'body' => $data]);
+            $result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(), $this->key);
+>>>>>>> 7fbd6c926c3612b9352d47e4aa45b03c700bdd79
             return $result;
         } catch (RequestException $e) {
             $result =$e->getRequest();

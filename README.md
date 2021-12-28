@@ -28,7 +28,8 @@ php artisan vendor:publish --provider="Vclaim\Bridging\BridgingBpjsServiceProvid
 //Confirasi .env untuk vclaim bpjs
 API_BPJS=https://dvlp.bpjs-kesehatan.go.id/vclaim-rest-1.1/
 CONS_ID=xxxxx
-SECRET_KEY=xxxx
+SECRET_KEY=xxxX
+USER_KEY=xxxx
 
 //Configurasi .env untuk sirs kemkes
 USER_ID=xxxx
@@ -45,6 +46,7 @@ return [
 		'endpoint'  => env('API_BPJS','ENDPOINT-KAMU'),
 		'consid'  => env('CONS_ID','CONSID-KAMU'),
 		'seckey' => env('SECRET_KEY', 'SECRET-KAMU'),
+		'user_key' => env('USER_KEY', 'SECRET-KAMU'),
 	]
 ]
 
@@ -99,6 +101,12 @@ Class SomeController
 ```
 
 ## Changelog
+
+### 2021-12-27
+- v1.0 Add user_key to bridging versi 2 and fix bug
+
+### 2021-11-22
+- v0.8-beta fix bug minor 
 
 ### 2021-09-19
 - v0.7-beta fix bug minor both briding old and new version
