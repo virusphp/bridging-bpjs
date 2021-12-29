@@ -45,7 +45,7 @@ trait Bpjs
 
 	public function setKey()
 	{
-        return GenerateBpjs::keyString($this->setConsid(), $this->setSeckey());
+        return $this->setConsid().$this->setSeckey().$this->setTimestamp();
 	}
 
 	public function setUrlEncode()

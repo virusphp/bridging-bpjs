@@ -26,7 +26,6 @@ class BridgingBpjs
         try {
             $url = $this->setServiceApi() . $endpoint;
             $response = $this->client->get($url, ['headers' => $this->setHeader()]);
-            // return $response->getBody()->getContents();
             $result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(), $this->setKey());
             return $result;
         } catch (RequestException $e) {

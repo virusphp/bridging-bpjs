@@ -5,6 +5,7 @@ use Vclaim\Bridging\GenerateBpjs;
 use Vclaim\Bridging\PesertaController;
 use Vclaim\Bridging\ReferensiController;
 
+
 Route::get('sample', function() {
 	$generate = new GenerateBpjs;
 	return $generate->generateSignature(config("bpjs.api.consid"), config("bpjs.api.seckey"));
@@ -76,6 +77,11 @@ Route::post('cari/suratkontrol/{nosurat}', function($nosurat) {
 	return $referensi;
 });
 
+Route::get('decomporessed', function() {
+	$referensi = new ReferensiController();
+	$referensi = $referensi->decompressed();
+	return $referensi;
+});
 
 Route::get('fasyankesx', function() {
 	dd("KOK GAK SAMPE SINI");
