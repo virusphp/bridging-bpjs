@@ -38,7 +38,6 @@ class BridgingBpjs
 
 	public function postRequest($endpoint, $data)
     {
-        $data = file_get_contents("php://input");
         try {
             $url = $this->setServiceApi() . $endpoint;
             $response = $this->client->post($url, ['headers' => $this->setHeaders(), 'body' => $data]);
