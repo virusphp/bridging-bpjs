@@ -53,7 +53,6 @@ class BridgingBpjs
 
     public function putRequest($endpoint, $data)
     {
-        $data = file_get_contents("php://input");
         try {
             $url = $this->setServiceApi() . $endpoint;
             $response = $this->client->put($url, ['headers' => $this->setHeaders(), 'body' => $data]);
@@ -69,7 +68,6 @@ class BridgingBpjs
 
     public function deleteRequest($endpoint, $data)
     {
-        $data = file_get_contents("php://input");
         try {
             $url = $this->setServiceApi() . $endpoint;
             $response = $this->client->put($url, ['headers' => $this->setHeaders(), 'body' => $data]);
