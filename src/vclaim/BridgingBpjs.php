@@ -12,6 +12,7 @@ class BridgingBpjs
     use Bpjs;
 
 	protected $client;
+    protected $header;
 
 	public function __construct()
 	{
@@ -19,14 +20,26 @@ class BridgingBpjs
 			'verify' => true,
 			'cookie' => true,
 		]);
+
+        $this->header = $this->setHeader();
 	}
+
+    protected function keyDecrypt() 
+    {
+        return $this->setConsid().$this->setSeckey().$this->header['X-timestamp'];
+    }
+
+    public function setHeaders()
+    {
+        return array_merge($this->header, $this->setUrlEncode());
+    }
 
 	public function getRequest($endpoint)
     {
         try {
             $url = $this->setServiceApi() . $endpoint;
-            $response = $this->client->get($url, ['headers' => $this->setHeader()]);
-            $result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(), $this->setKey());
+            $response = $this->client->get($url, ['headers' => $this->header]);
+            $result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(), $this->keyDecrypt());
             return $result;
         } catch (RequestException $e) {
             $result = $e->getRequest();
@@ -41,7 +54,7 @@ class BridgingBpjs
         try {
             $url = $this->setServiceApi() . $endpoint;
             $response = $this->client->post($url, ['headers' => $this->setHeaders(), 'body' => $data]);
-			$result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(),$this->setKey());
+			$result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(),$this->keyDecrypt());
             return $result;
         } catch (RequestException $e) {
             $result =$e->getRequest();
@@ -56,7 +69,7 @@ class BridgingBpjs
         try {
             $url = $this->setServiceApi() . $endpoint;
             $response = $this->client->put($url, ['headers' => $this->setHeaders(), 'body' => $data]);
-			$result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(),$this->setKey());
+			$result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(),$this->keyDecrypt());
             return $result;
         } catch (RequestException $e) {
             $result =$e->getRequest();
@@ -71,7 +84,7 @@ class BridgingBpjs
         try {
             $url = $this->setServiceApi() . $endpoint;
             $response = $this->client->put($url, ['headers' => $this->setHeaders(), 'body' => $data]);
-			$result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(),$this->setKey());
+			$result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(),$this->keyDecrypt());
             return $result;
         } catch (RequestException $e) {
             $result =$e->getRequest();

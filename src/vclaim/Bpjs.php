@@ -43,10 +43,6 @@ trait Bpjs
         return GenerateBpjs::generateSignature($this->setConsid(),$this->setSeckey());
 	}
 
-	public function setKey()
-	{
-        return $this->setConsid().$this->setSeckey().$this->setTimestamp();
-	}
 
 	public function setUrlEncode()
 	{
@@ -66,11 +62,6 @@ trait Bpjs
 			'X-signature' => $this->setSignature(),
 			'user_key'    => $this->setUserKey()
 		];
-	}
-
-	public function setHeaders()
-	{
-		return array_merge($this->setHeader(), $this->setUrlEncode());
 	}
 
 }
