@@ -75,6 +75,6 @@ class GenerateBpjs
             "metaData" => $metaData,
             "response" => json_decode(self::decompress(self::stringDecrypt($key, $response)))
         ];
-		return response()->json($data);
+		return json_encode($data);
 	}
 }
