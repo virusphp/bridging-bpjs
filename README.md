@@ -106,6 +106,10 @@ Class SomeController
 
 # Changelog
 
+#### 2022-01-12
+
+- v1.3 fix bug response json to encode
+
 #### 2022-01-04
 
 - v1.3 fix bug and single generate timestamp to open key
