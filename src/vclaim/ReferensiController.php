@@ -76,11 +76,43 @@ Class ReferensiController
 		return $this->bridging->getRequest($endpoint);
 	}
 
+	public function cariSep($nosep)
+	{
+		$endpoint = "SEP/{$nosep}";
+		return $this->bridging->getRequest($endpoint);
+	}
+
+	public function cariSuratKontrol($nosep)
+	{
+		$endpoint = "RencanaKontrol/noSuratKontrol/{$nosep}";
+		return $this->bridging->getRequest($endpoint);
+	}
+
+	public function cariSepInternal($nosep)
+	{
+		$endpoint = "SEP/Internal/{$nosep}";
+		return $this->bridging->getRequest($endpoint);
+	}
+
 	public function postSEP(Request $request)
 	{
 		$endpoint = 'SEP/2.0/insert';
 		$data = $request->all();
 		return $this->bridging->postRequest($endpoint,$data);
+	}
+
+	public function deleteSep(Request $request)
+	{
+		$endpoint = "SEP/2.0/delete";
+		$data = $request->all();
+		return $this->bridging->deleteRequest($endpoint,$data);
+	}
+
+	public function deleteSepInternal(Request $request)
+	{
+		$endpoint = "SEP/Internal/delete";
+		$data = $request->all();
+		return $this->bridging->deleteRequest($endpoint,$data);
 	}
 
 	public function updatePulang(Request $request)
@@ -99,4 +131,30 @@ Class ReferensiController
 		$data = GenerateBpjs::decompress(GenerateBpjs::stringDecrypt($key1, $string1));
 		return response($data);
 	}
+
+	public function cariRujukan($rujukan)
+	{
+		$endpoint = "Rujukan/{$rujukan}";
+		return $this->bridging->getRequest($endpoint);
+	}
+	
+	public function cariRujukanPeserta($nomor)
+	{
+		$endpoint = "Rujukan/Peserta/{$nomor}";
+		return $this->bridging->getRequest($endpoint);
+	}
+
+	public function cariHistori($nomor, $tglmulai, $tglakhir)
+	{
+		// dd($nomor, $tglakhir, $tglakhir);
+		$endpoint = "monitoring/HistoriPelayanan/NoKartu/{$nomor}/tglMulai/{$tglmulai}/tglAkhir/{$tglakhir}";
+		return $this->bridging->getRequest($endpoint);
+	}
+
+	public function cariRujukanListPcare($rujukan)
+	{
+		$endpoint = "Rujukan/List/Peserta/{$rujukan}";
+		return $this->bridging->getRequest($endpoint);
+	}
+
 }

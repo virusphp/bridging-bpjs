@@ -51,6 +51,7 @@ class BridgingBpjs
 
 	public function postRequest($endpoint, $data)
     {
+        //  $data = file_get_contents("php://input");
         try {
             $url = $this->setServiceApi() . $endpoint;
             $response = $this->client->post($url, ['headers' => $this->setHeaders(), 'body' => $data]);
@@ -81,9 +82,10 @@ class BridgingBpjs
 
     public function deleteRequest($endpoint, $data)
     {
+        // $data = file_get_contents("php://input");
         try {
             $url = $this->setServiceApi() . $endpoint;
-            $response = $this->client->put($url, ['headers' => $this->setHeaders(), 'body' => $data]);
+            $response = $this->client->delete($url, ['headers' => $this->setHeaders(), 'body' => $data]);
 			$result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(),$this->keyDecrypt());
             return $result;
         } catch (RequestException $e) {
