@@ -106,9 +106,11 @@ Class SomeController
 
 # Changelog
 
-#### 2022-01-12
+#### 2022-01-25
 
 - v1.3.2 and v.13.3 fix bug response and add support php version 8
+
+#### 2022-01-12
 
 - v1.3.1 fix bug response json to encode
 
