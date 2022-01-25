@@ -29,11 +29,11 @@ use Vclaim\Bridging\ReferensiController;
 // 	return $referensi;
 // });
 
-// Route::get('dpjp/pelayanan/{pelayanan}/tglpelayanan/{tglpelayanan}/spesialis/{spesialis}', function($pelayanan, $tglpelayanan, $spesialis) {
-// 	$referensi = new ReferensiController();
-// 	$referensi = $referensi->getDokter($pelayanan, $tglpelayanan, $spesialis);
-// 	return $referensi;
-// });
+Route::get('dpjp/pelayanan/{pelayanan}/tglpelayanan/{tglpelayanan}/spesialis/{spesialis}', function($pelayanan, $tglpelayanan, $spesialis) {
+	$referensi = new ReferensiController();
+	$referensi = $referensi->getDokter($pelayanan, $tglpelayanan, $spesialis);
+	return $referensi;
+});
 
 // Route::get('kontrol/list/tglawal/{tglawal}/tglakhir/{tglakhir}/filter/{tglkontrol}', function($tglawal, $tglakhir, $tglkontrol) {
 // 	$referensi = new ReferensiController();
@@ -71,11 +71,11 @@ use Vclaim\Bridging\ReferensiController;
 // 	return $referensi;
 // });
 
-// Route::post('delete/sep', function(Request $request) {
-// 	$referensi = new ReferensiController($request);
-// 	$referensi = $referensi->deleteSep($request);
-// 	return $referensi;
-// });
+Route::post('delete/sep', function(Request $request) {
+	$referensi = new ReferensiController($request);
+	$referensi = $referensi->deleteSep($request);
+	return $referensi;
+});
 
 // Route::post('delete/sepinternal', function(Request $request) {
 // 	$referensi = new ReferensiController($request);
@@ -113,11 +113,11 @@ use Vclaim\Bridging\ReferensiController;
 // 	return $referensi;
 // });
 
-// Route::get('rujukan/{rujukan}', function($rujukan) {
-// 	$referensi = new ReferensiController();
-// 	$referensi = $referensi->cariRujukan($rujukan);
-// 	return $referensi;
-// });
+Route::get('rujukan/{rujukan}', function($rujukan) {
+	$referensi = new ReferensiController();
+	$referensi = $referensi->cariRujukan($rujukan);
+	return $referensi;
+});
 
 // Route::get('rujukan/peserta/{nomor}', function($nomor) {
 // 	$referensi = new ReferensiController();

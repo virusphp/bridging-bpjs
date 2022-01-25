@@ -82,7 +82,7 @@ class BridgingBpjs
 
     public function deleteRequest($endpoint, $data)
     {
-        // $data = file_get_contents("php://input");
+        $data = file_get_contents("php://input");
         try {
             $url = $this->setServiceApi() . $endpoint;
             $response = $this->client->delete($url, ['headers' => $this->setHeaders(), 'body' => $data]);
