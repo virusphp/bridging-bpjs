@@ -43,7 +43,6 @@ trait Bpjs
         return GenerateBpjs::generateSignature($this->setConsid(),$this->setSeckey());
 	}
 
-
 	public function setUrlEncode()
 	{
 		return array('Content-Type' => 'Application/x-www-form-urlencoded');

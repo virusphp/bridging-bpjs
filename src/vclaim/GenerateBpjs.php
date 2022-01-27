@@ -61,6 +61,23 @@ class GenerateBpjs
         return json_encode($result);
 	}
 
+	public static function responseBpjsV2Antrol($dataJson, $key)
+	{
+		$result = json_decode($dataJson);
+		if ($result->metadata->code == "200" && is_string($result->response)) {
+            return self::doDecompress($result, $key);
+        }
+        return json_encode($result);
+	}
+
+	protected static function doDecompressAntrol($jsonObject, $key)
+	{
+		if ($jsonObject->metadata->code == "200") {
+			return self::mappingResponseAntrol($jsonObject->metaData, $jsonObject->response, $key);
+		}
+		return json_encode($jsonObject);
+	}
+
 	protected static function doDecompress($jsonObject, $key)
 	{
 		if ($jsonObject->metaData->code == "200") {
@@ -73,6 +90,15 @@ class GenerateBpjs
 	{
 		$data = [
             "metaData" => $metaData,
+            "response" => json_decode(self::decompress(self::stringDecrypt($key, $response)))
+        ];
+		return json_encode($data);
+	}
+
+	protected static function mappingResponseAntrol($metaData, $response, $key)
+	{
+		$data = [
+            "metadata" => $metaData,
             "response" => json_decode(self::decompress(self::stringDecrypt($key, $response)))
         ];
 		return json_encode($data);

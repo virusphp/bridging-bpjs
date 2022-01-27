@@ -17,6 +17,12 @@ use Vclaim\Bridging\ReferensiController;
 // 	return $referensi;
 // });
 
+Route::get('referensi/dokter/pelayanan/{pelayanan}/tglpel/{tglpel}/spesialis/{kode}', function($pelayanan, $tglpel, $kode){
+	$referensi = new ReferensiController();
+	$referensi = $referensi->getDokter($pelayanan, $tglpel, $kode);
+	return $referensi;
+});
+
 // Route::get('peserta/nokartu/{nokartu}/tglsep/{tglsep}', function($nokartu, $tglsep){
 // 	$referensi = new PesertaController();
 // 	$referensi = $referensi->getPeserta($nokartu, $tglsep);
