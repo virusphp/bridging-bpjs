@@ -73,7 +73,7 @@ class GenerateBpjs
 	protected static function doDecompressAntrol($jsonObject, $key)
 	{
 		if ($jsonObject->metadata->code == "200") {
-			return self::mappingResponseAntrol($jsonObject->metaData, $jsonObject->response, $key);
+			return self::mappingResponseAntrol($jsonObject->metadata, $jsonObject->response, $key);
 		}
 		return json_encode($jsonObject);
 	}
