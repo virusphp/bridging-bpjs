@@ -108,6 +108,10 @@ Class SomeController
 
 #### 2022-01-25
 
+- v1.3.4 bug response antrol not same vclaim and add response antrol
+
+#### 2022-01-25
+
 - v1.3.2 and v.13.3 fix bug response and add support php version 8
 
 #### 2022-01-12

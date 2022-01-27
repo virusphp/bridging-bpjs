@@ -65,7 +65,7 @@ class GenerateBpjs
 	{
 		$result = json_decode($dataJson);
 		if ($result->metadata->code == "200" && is_string($result->response)) {
-            return self::doDecompress($result, $key);
+            return self::doDecompressAntrol($result, $key);
         }
         return json_encode($result);
 	}
