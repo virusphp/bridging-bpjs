@@ -3,36 +3,12 @@
 namespace Vclaim\Bridging;
 
 use Vclaim\Bridging\GenerateBpjs;
-use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Vclaim\Bridging\Bpjs;
 
 class BridgingBpjs 
 {
     use Bpjs;
-
-	protected $client;
-    protected $header;
-
-	public function __construct()
-	{
-		$this->client = new Client([
-			'verify' => true,
-			'cookie' => true,
-		]);
-
-        $this->header = $this->setHeader();
-	}
-
-    protected function keyDecrypt() 
-    {
-        return $this->setConsid().$this->setSeckey().$this->header['X-timestamp'];
-    }
-
-    public function setHeaders()
-    {
-        return array_merge($this->header, $this->setUrlEncode());
-    }
 
 	public function getRequest($endpoint)
     {

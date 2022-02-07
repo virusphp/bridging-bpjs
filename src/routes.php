@@ -23,11 +23,11 @@ Route::get('referensi/dokter/pelayanan/{pelayanan}/tglpel/{tglpel}/spesialis/{ko
 	return $referensi;
 });
 
-// Route::get('peserta/nokartu/{nokartu}/tglsep/{tglsep}', function($nokartu, $tglsep){
-// 	$referensi = new PesertaController();
-// 	$referensi = $referensi->getPeserta($nokartu, $tglsep);
-// 	return $referensi;
-// });
+Route::get('peserta/nokartu/{nokartu}/tglsep/{tglsep}', function($nokartu, $tglsep){
+	$referensi = new PesertaController();
+	$referensi = $referensi->getPeserta($nokartu, $tglsep);
+	return $referensi;
+});
 
 // Route::get('rencana/listpoli/jnskontrol/{jnsKontrol}/nomor/{nomor}/tglrencana/{tglRencana}', function($jnsKontrol, $nomor, $tglRencana) {
 // 	$referensi = new ReferensiController();
@@ -35,11 +35,24 @@ Route::get('referensi/dokter/pelayanan/{pelayanan}/tglpel/{tglpel}/spesialis/{ko
 // 	return $referensi;
 // });
 
+Route::get('rencana/liskontrol/bulan/{bulan}/tahun/{tahun}/nokartu/{nokartu}/filer/{filter}', function($bulan, $tahun, $nokartu, $filter) {
+	$referensi = new ReferensiController();
+	$referensi = $referensi->getListKontrol($bulan, $tahun, $nokartu, $filter);
+	return $referensi;
+});
+
 Route::get('dpjp/pelayanan/{pelayanan}/tglpelayanan/{tglpelayanan}/spesialis/{spesialis}', function($pelayanan, $tglpelayanan, $spesialis) {
 	$referensi = new ReferensiController();
 	$referensi = $referensi->getDokter($pelayanan, $tglpelayanan, $spesialis);
 	return $referensi;
 });
+
+Route::get('rujukan/keluar/list/tglmulai/{tglmulai}/tglakhir/{tglakhir}', function($tglmulai, $tglakhir) {
+	$referensi = new ReferensiController();
+	$referensi = $referensi->getListRujukan($tglmulai, $tglakhir);
+	return $referensi;
+});
+
 
 // Route::get('kontrol/list/tglawal/{tglawal}/tglakhir/{tglakhir}/filter/{tglkontrol}', function($tglawal, $tglakhir, $tglkontrol) {
 // 	$referensi = new ReferensiController();
@@ -59,17 +72,17 @@ Route::get('dpjp/pelayanan/{pelayanan}/tglpelayanan/{tglpelayanan}/spesialis/{sp
 // 	return $referensi;
 // });
 
-// Route::get('sep/{sep}', function($sep) {
-// 	$referensi = new ReferensiController();
-// 	$referensi = $referensi->cariSep($sep);
-// 	return $referensi;
-// });
+Route::get('sep/{sep}', function($sep) {
+	$referensi = new ReferensiController();
+	$referensi = $referensi->cariSep($sep);
+	return $referensi;
+});
 
-// Route::get('sep/internal/{sep}', function($sep) {
-// 	$referensi = new ReferensiController();
-// 	$referensi = $referensi->cariSepInternal($sep);
-// 	return $referensi;
-// });
+Route::get('sep/internal/{sep}', function($sep) {
+	$referensi = new ReferensiController();
+	$referensi = $referensi->cariSepInternal($sep);
+	return $referensi;
+});
 
 // Route::post('create/sep', function(Request $request) {
 // 	$referensi = new ReferensiController($request);
@@ -107,11 +120,11 @@ Route::post('delete/sep', function(Request $request) {
 // 	return $referensi;
 // });
 
-// Route::post('cari/suratkontrol/{nosurat}', function($nosurat) {
-// 	$referensi = new ReferensiController();
-// 	$referensi = $referensi->postCariSurat($nosurat);
-// 	return $referensi;
-// });
+Route::get('cari/suratkontrol/{nosurat}', function($nosurat) {
+	$referensi = new ReferensiControllposter();
+	$referensi = $referensi->getCariSurat($nosurat);
+	return $referensi;
+});
 
 // Route::get('decomporessed', function() {
 // 	$referensi = new ReferensiController();
@@ -125,17 +138,29 @@ Route::get('rujukan/{rujukan}', function($rujukan) {
 	return $referensi;
 });
 
+Route::get('rujukan/rs/{rujukan}', function($rujukan) {
+	$referensi = new ReferensiController();
+	$referensi = $referensi->cariRujukanRs($rujukan);
+	return $referensi;
+});
+
 // Route::get('rujukan/peserta/{nomor}', function($nomor) {
 // 	$referensi = new ReferensiController();
 // 	$referensi = $referensi->cariRujukanPeserta($nomor);
 // 	return $referensi;
 // });
 
-// Route::get('mon/historipelayanan/nokartu/{nomor}/tglmulai/{tglmulai}/tglakhir/{tglakhir}', function($nomor, $tglmulai, $tglakhir) {
-// 	$referensi = new ReferensiController();
-// 	$referensi = $referensi->cariHistori($nomor, $tglmulai, $tglakhir);
-// 	return $referensi;
-// });
+Route::get('mon/historipelayanan/nokartu/{nomor}/tglmulai/{tglmulai}/tglakhir/{tglakhir}', function($nomor, $tglmulai, $tglakhir) {
+	$referensi = new ReferensiController();
+	$referensi = $referensi->cariHistori($nomor, $tglmulai, $tglakhir);
+	return $referensi;
+});
+
+Route::get('rujukan/jumlahsep/{jnsrujukan}/{norujukan}', function($jnsrujukan, $norujukan) {
+	$referensi = new ReferensiController();
+	$referensi = $referensi->jumlahSep($jnsrujukan, $norujukan);
+	return $referensi;
+});
 
 // Route::get('rujukan/list/peserta/{peserta}', function($rujukan) {
 // 	$referensi = new ReferensiController();

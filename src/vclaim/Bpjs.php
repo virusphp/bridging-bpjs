@@ -4,13 +4,24 @@ namespace Vclaim\Bridging;
 
 use Vclaim\Bridging\GenerateBpjs;
 use Dotenv\Dotenv;
+use GuzzleHttp\Client;
 
 trait Bpjs
 {
+	protected $client;
+    protected $header;
+
 	public function __construct()
 	{
-		$dotenv = Dotenv::createUnsafeImmutable(__DIR__);
-		$dotenv->load();	
+		$dotenv = Dotenv::createUnsafeImmutable(getcwd());
+		$dotenv->safeLoad();	
+
+		$this->client = new Client([
+			'verify' => true,
+			'cookie' => true,
+		]);
+
+        $this->header = $this->setHeader();
 	}
 
 	public function setConsid()
@@ -63,4 +74,13 @@ trait Bpjs
 		];
 	}
 
+	protected function keyDecrypt() 
+    {
+        return $this->setConsid().$this->setSeckey().$this->header['X-timestamp'];
+    }
+
+    public function setHeaders()
+    {
+        return array_merge($this->header, $this->setUrlEncode());
+    }
 }

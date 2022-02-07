@@ -37,9 +37,21 @@ Class ReferensiController
 		return $this->bridging->getRequest($endpoint);
 	}
 
+	public function getListKontrol($bulan, $tahun, $nokartu, $filter)
+	{
+		$endpoint = "RencanaKontrol/ListRencanaKontrol/Bulan/{$bulan}/Tahun/{$tahun}/Nokartu/{$nokartu}/filter/{$filter}";
+		return $this->bridging->getRequest($endpoint);
+	}
+
 	public function getDokter($pelayanan, $tglPelayanan, $spesialis)
 	{
 		$endpoint = 'referensi/dokter/pelayanan/'.$pelayanan.'/tglPelayanan/'.$tglPelayanan.'/Spesialis/'.$spesialis;
+		return $this->bridging->getRequest($endpoint);
+	}
+
+	public function getListRujukan($tglmulai, $tglakhir)
+	{
+		$endpoint  = "Rujukan/Keluar/List/tglMulai/{$tglmulai}/tglAkhir/{$tglakhir}";
 		return $this->bridging->getRequest($endpoint);
 	}
 
@@ -137,6 +149,12 @@ Class ReferensiController
 		$endpoint = "Rujukan/{$rujukan}";
 		return $this->bridging->getRequest($endpoint);
 	}
+
+	public function cariRujukanRs($rujukan)
+	{
+		$endpoint = "Rujukan/RS/{$rujukan}";
+		return $this->bridging->getRequest($endpoint);
+	}
 	
 	public function cariRujukanPeserta($nomor)
 	{
@@ -157,4 +175,9 @@ Class ReferensiController
 		return $this->bridging->getRequest($endpoint);
 	}
 
+	public function jumlahSep($jnsRujukan, $noRujukan)
+	{
+		$endpoint = "Rujukan/JumlahSEP/{$jnsRujukan}/{$noRujukan}";
+		return $this->bridging->getRequest($endpoint);
+	}
 }
