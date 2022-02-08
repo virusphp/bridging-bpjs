@@ -69,7 +69,7 @@ class GenerateBpjs
         }
         return json_encode($result);
 	}
-
+	
 	protected static function doDecompressAntrol($jsonObject, $key)
 	{
 		if ($jsonObject->metadata->code == "200") {
