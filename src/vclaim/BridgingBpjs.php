@@ -86,6 +86,23 @@ class BridgingBpjs
         } 
     }
 
+    public function putRequestAntrol($endpoint, $data)
+    {
+        try {
+            $url = $this->setServiceApi() . $endpoint;
+            $response = $this->client->put($url, ['headers' => $this->setHeaders(), 'body' => $data]);
+			$result = GenerateBpjs::responseBpjsV2Antrol($response->getBody()->getContents(),$this->keyDecrypt());
+            return $result;
+        } catch (RequestException $e) {
+            $result =$e->getRequest();
+            if ($e->hasResponse()) {
+                $result = $e->getResponse();
+            }
+        } 
+    }
+
+
+
     public function deleteRequest($endpoint, $data)
     {
         $data = file_get_contents("php://input");
