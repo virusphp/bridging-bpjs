@@ -96,6 +96,12 @@ Route::post('delete/sep', function(Request $request) {
 	return $referensi;
 });
 
+Route::post('delete/rujukan', function(Request $request) {
+	$referensi = new ReferensiController($request);
+	$referensi = $referensi->deleteRujukan($request);
+	return $referensi;
+});
+
 // Route::post('delete/sepinternal', function(Request $request) {
 // 	$referensi = new ReferensiController($request);
 // 	$referensi = $referensi->deleteSepInternal($request);

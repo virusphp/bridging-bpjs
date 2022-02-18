@@ -162,6 +162,13 @@ Class ReferensiController
 		return $this->bridging->getRequest($endpoint);
 	}
 
+	public function deleteRujukan(Request $request)
+	{
+		$endpoint = "Rujukan/delete";
+		$data = $request->all();
+		return $this->bridging->deleteRequest($endpoint,$data);
+	}
+
 	public function cariHistori($nomor, $tglmulai, $tglakhir)
 	{
 		// dd($nomor, $tglakhir, $tglakhir);
