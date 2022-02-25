@@ -9,7 +9,7 @@ use GuzzleHttp\Client;
 trait Bpjs
 {
 	protected $client;
-    protected $header;
+    protected $headerVclaim;
 
 	public function __construct()
 	{
@@ -21,7 +21,7 @@ trait Bpjs
 			'cookie' => true,
 		]);
 
-        $this->header = $this->setHeader();
+        $this->headerVclaim = $this->setHeaderVclaim();
 	}
 
 	public function setConsid()
@@ -34,14 +34,14 @@ trait Bpjs
         return getenv('SECRET_KEY');
 	}
 
-	public function setServiceApi()
+	public function setServiceApiVclaim()
 	{
-		return getenv('API_BPJS');
+		return getenv('API_BPJS_VCLAIM');
 	}
 
-	public function setUserKey()
+	public function setUserKeyVclaim()
 	{
-		return getenv('USER_KEY');		
+		return getenv('USER_KEY_VCLAIM');
 	}
 
 	public function setTimestamp()
@@ -64,23 +64,23 @@ trait Bpjs
 		return array('Content-Type' => 'Application/Json');
 	}
 
-	public function setHeader()
+	public function setHeaderVclaim()
 	{
 		return [
 			'X-cons-id'   => $this->setConsid(),
 			'X-timestamp' => $this->setTimestamp(),
 			'X-signature' => $this->setSignature(),
-			'user_key'    => $this->setUserKey()
+			'user_key'    => $this->setUserKeyVclaim()
 		];
 	}
 
-	protected function keyDecrypt() 
+	protected function keyDecryptVclaim() 
     {
-        return $this->setConsid().$this->setSeckey().$this->header['X-timestamp'];
+        return $this->setConsid().$this->setSeckey().$this->headerVclaim['X-timestamp'];
     }
 
-    public function setHeaders()
+    public function setHeadersVclaim()
     {
-        return array_merge($this->header, $this->setUrlEncode());
+        return array_merge($this->headerVclaim, $this->setUrlEncode());
     }
 }

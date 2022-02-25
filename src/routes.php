@@ -11,11 +11,11 @@ use Vclaim\Bridging\ReferensiController;
 // 	return $generate->generateSignature(config("bpjs.api.consid"), config("bpjs.api.seckey"));
 // });
 
-// Route::get('referensi/diagnosa/{kode}', function($kode){
-// 	$referensi = new ReferensiController();
-// 	$referensi = $referensi->getDiagnosa($kode);
-// 	return $referensi;
-// });
+Route::get('referensi/diagnosa/{kode}', function($kode){
+	$referensi = new ReferensiController();
+	$referensi = $referensi->getDiagnosa($kode);
+	return $referensi;
+});
 
 Route::get('referensi/dokter/pelayanan/{pelayanan}/tglpel/{tglpel}/spesialis/{kode}', function($pelayanan, $tglpel, $kode){
 	$referensi = new ReferensiController();

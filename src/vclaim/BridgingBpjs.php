@@ -10,12 +10,12 @@ class BridgingBpjs
 {
     use Bpjs;
 
-	public function getRequest($endpoint)
+	public function getRequestVclaim($endpoint)
     {
         try {
-            $url = $this->setServiceApi() . $endpoint;
-            $response = $this->client->get($url, ['headers' => $this->header]);
-            $result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(), $this->keyDecrypt());
+            $url = $this->setServiceApiVclaim() . $endpoint;
+            $response = $this->client->get($url, ['headers' => $this->headerVclaim]);
+            $result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(), $this->keyDecryptVclaim());
             return $result;
         } catch (RequestException $e) {
             $result = $e->getRequest();
@@ -40,13 +40,13 @@ class BridgingBpjs
         } 
     }
 
-	public function postRequest($endpoint, $data)
+	public function postRequestVclaim($endpoint, $data)
     {
         //  $data = file_get_contents("php://input");
         try {
-            $url = $this->setServiceApi() . $endpoint;
-            $response = $this->client->post($url, ['headers' => $this->setHeaders(), 'body' => $data]);
-			$result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(),$this->keyDecrypt());
+            $url = $this->setServiceApiVclaim() . $endpoint;
+            $response = $this->client->post($url, ['headers' => $this->setHeadersVclaim(), 'body' => $data]);
+			$result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(),$this->keyDecryptVclaim());
             return $result;
         } catch (RequestException $e) {
             $result =$e->getRequest();
@@ -56,11 +56,11 @@ class BridgingBpjs
         } 
     }
 
-    public function postRequestNoEncrypt($endpoint, $data)
+    public function postRequestNoEncryptVclaim($endpoint, $data)
     {
          try {
-            $url = $this->setServiceApi() . $endpoint;
-            $response = $this->client->post($url, ['headers' => $this->setHeaders(), 'body' => $data]);
+            $url = $this->setServiceApiVclaim() . $endpoint;
+            $response = $this->client->post($url, ['headers' => $this->setHeadersVclaim(), 'body' => $data]);
 			$result = $response->getBody()->getContents();
             return $result;
         } catch (RequestException $e) {
@@ -86,12 +86,12 @@ class BridgingBpjs
         } 
     }
 
-    public function putRequest($endpoint, $data)
+    public function putRequestVclaim($endpoint, $data)
     {
         try {
-            $url = $this->setServiceApi() . $endpoint;
-            $response = $this->client->put($url, ['headers' => $this->setHeaders(), 'body' => $data]);
-			$result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(),$this->keyDecrypt());
+            $url = $this->setServiceApiVclaim() . $endpoint;
+            $response = $this->client->put($url, ['headers' => $this->setHeadersVclaim(), 'body' => $data]);
+			$result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(),$this->keyDecryptVclaim());
             return $result;
         } catch (RequestException $e) {
             $result =$e->getRequest();
@@ -116,13 +116,13 @@ class BridgingBpjs
         } 
     }
 
-    public function deleteRequest($endpoint, $data)
+    public function deleteRequestVclaim($endpoint, $data)
     {
         // $data = file_get_contents("php://input");
         try {
-            $url = $this->setServiceApi() . $endpoint;
-            $response = $this->client->delete($url, ['headers' => $this->setHeaders(), 'body' => $data]);
-			$result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(),$this->keyDecrypt());
+            $url = $this->setServiceApiVclaim() . $endpoint;
+            $response = $this->client->delete($url, ['headers' => $this->setHeadersVclaim(), 'body' => $data]);
+			$result = GenerateBpjs::responseBpjsV2($response->getBody()->getContents(),$this->keyDecryptVclaim());
             return $result;
         } catch (RequestException $e) {
             $result =$e->getRequest();
@@ -132,12 +132,11 @@ class BridgingBpjs
         } 
     }
 
-    public function deleteRequestNoEncrypt($endpoint, $data)
+    public function deleteRequestNoEncryptVclaim($endpoint, $data)
     {
-        // $data = file_get_contents("php://input");
         try {
-            $url = $this->setServiceApi() . $endpoint;
-            $response = $this->client->delete($url, ['headers' => $this->setHeaders(), 'body' => $data]);
+            $url = $this->setServiceApiVclaim() . $endpoint;
+            $response = $this->client->delete($url, ['headers' => $this->setHeadersVclaim(), 'body' => $data]);
 			$result = $response->getBody()->getContents();
             return $result;
         } catch (RequestException $e) {

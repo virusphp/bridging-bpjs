@@ -30,10 +30,10 @@ php artisan vendor:publish --provider="Vclaim\Bridging\BridgingBpjsServiceProvid
 
 ```env
 //Confirasi .env untuk vclaim bpjs
-API_BPJS=https://dvlp.bpjs-kesehatan.go.id/vclaim-rest-1.1/
+API_BPJS_VCLAIM=https://apijkn-dev.bpjs-kesehatan.go.id/vclaim-rest-dev/
 CONS_ID=xxxxx
 SECRET_KEY=xxxX
-USER_KEY=xxxx
+USER_KEY_VCLAIM=xxxx
 
 //Configurasi .env untuk sirs kemkes
 USER_ID=xxxx
