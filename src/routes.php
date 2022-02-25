@@ -3,7 +3,7 @@
 use Symfony\Component\HttpFoundation\Request;
 use Vclaim\Bridging\GenerateBpjs;
 use Vclaim\Bridging\PesertaController;
-use Vclaim\Bridging\ReferensiController;
+use Bpjs\Bridging\ReferensiController;
 
 
 // Route::get('sample', function() {

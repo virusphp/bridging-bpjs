@@ -1,6 +1,6 @@
 <?php
 
-namespace Vclaim\Bridging;
+namespace Bpjs\Bridging;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -26,7 +26,7 @@ class BridgingBpjsServiceProvider extends ServiceProvider
        include __DIR__.'../../routes.php';
        
        $this->publishes([
-            __DIR__.'../../../../config/bpjs.php' => config_path('bpjs.php'),
+            __DIR__.'../../../../../config/bpjs.php' => config_path('bpjs.php'),
         ], 'config');
     }
 }

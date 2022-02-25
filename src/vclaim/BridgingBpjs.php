@@ -6,7 +6,7 @@ use Vclaim\Bridging\GenerateBpjs;
 use GuzzleHttp\Exception\RequestException;
 use Vclaim\Bridging\Bpjs;
 
-class BridgingBpjs 
+class BridgingBpjsxx
 {
     use Bpjs;
 

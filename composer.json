@@ -1,6 +1,6 @@
 {
   "name": "virusphp/bridging-bpjs",
-  "description": "Briding Bpjs Service",
+  "description": "Service Briding Bpjs",
   "license": "MIT",
   "authors": [
     {
@@ -17,7 +17,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Vclaim\\Bridging\\": "src/vclaim",
+      "Bpjs\\Bridging\\": "src/Bpjs/",
       "Kemkes\\Bridging\\": "src/kemkes"
     }
   },
@@ -27,7 +27,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Vclaim\\Bridging\\BridgingBpjsServiceProvider"
+        "Bpjs\\Bridging\\BridgingBpjsServiceProvider"
       ]
     }
   }

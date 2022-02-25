@@ -1,13 +1,13 @@
 <?php
 
-namespace Vclaim\Bridging;
+namespace Bpjs\Bridging;
 
+use Bpjs\Bridging\Vclaim\BridgeVclaim;
 use Symfony\Component\HttpFoundation\Request;
-use Vclaim\Bridging\Bpjs;
 
 Class ReferensiController 
 {
-	use Bpjs;	
+	// use Bpjs;	
 	protected $bridging;
 	/**
 	 * default Request example 
@@ -22,13 +22,13 @@ Class ReferensiController
 	 */
 	public function __construct()
 	{
-		$this->bridging = new BridgingBpjs();
+		$this->bridging = new BridgeVclaim();
 	}
 
 	public function getDiagnosa($kode)
 	{
 		$endpoint = 'referensi/diagnosa/'. $kode;
-		return $this->bridging->getRequestVclaim($endpoint);
+		return $this->bridging->getRequest($endpoint);
 	}
 
 	public function getPoliKontnrol($jnsKontrol, $nomor, $tglRencana)
