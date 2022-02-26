@@ -29,4 +29,46 @@ class Bridge
             }
         } 
     } 
+
+    public function httpPost($endpoint, $header, $data)
+    {
+        try {
+            $response = $this->client->post($endpoint, ['headers' => $header, 'body' => $data]);
+			$result = $response->getBody()->getContents();
+            return $result;
+        } catch (RequestException $e) {
+            $result =$e->getRequest();
+            if ($e->hasResponse()) {
+                $result = $e->getResponse();
+            }
+        } 
+    } 
+
+    public function httpPut($endpoint, $header, $data)
+    {
+         try {
+            $response = $this->client->put($endpoint, ['headers' => $header, 'body' => $data]);
+			$result = $response->getBody()->getContents();
+            return $result;
+        } catch (RequestException $e) {
+            $result =$e->getRequest();
+            if ($e->hasResponse()) {
+                $result = $e->getResponse();
+            }
+        } 
+    }
+
+    public function httpDelete($endpoint, $header, $data)
+    {
+         try {
+            $response = $this->client->delete($endpoint, ['headers' => $header, 'body' => $data]);
+			$result = $response->getBody()->getContents();
+            return $result;
+        } catch (RequestException $e) {
+            $result =$e->getRequest();
+            if ($e->hasResponse()) {
+                $result = $e->getResponse();
+            }
+        } 
+    }
 }
