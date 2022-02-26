@@ -59,7 +59,7 @@ return [
 ```php
 <?php
 // Example Controller bridging to Vclaim BPJS  (Laravel 7 ke atas)
-use Vclaim\Bridging\BridgingBpjs;
+use Bpjs\Bridging\BridgeVclaim;
 
 Class SomeController
 {
@@ -105,6 +105,10 @@ Class SomeController
 ```
 
 # Changelog
+
+#### 2022-02-26
+
+- v2.0.0 Release Mayor Refactoring all service
 
 #### 2022-01-29 - 2022-02-07
 
