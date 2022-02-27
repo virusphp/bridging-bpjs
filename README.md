@@ -29,11 +29,18 @@ php artisan vendor:publish --provider="Vclaim\Bridging\BridgingBpjsServiceProvid
 ## Usage
 
 ```env
-//Confirasi .env untuk vclaim bpjs
-API_BPJS_VCLAIM=https://apijkn-dev.bpjs-kesehatan.go.id/vclaim-rest-dev/
+//Confirasi .env bpjs
 CONS_ID=xxxxx
 SECRET_KEY=xxxX
+
+// Config untuk Vclaim BPJS
+API_BPJS_VCLAIM=https://apijkn-dev.bpjs-kesehatan.go.id/vclaim-rest-dev/
 USER_KEY_VCLAIM=xxxx
+
+// Config untuk Antrol BPJS
+API_BPJS_ANTROL=https://apijkn-dev.bpjs-kesehatan.go.id/antreanrs_dev/
+USER_KEY_ANTROL=xxxx
+
 
 //Configurasi .env untuk sirs kemkes
 USER_ID=xxxx
@@ -45,6 +52,7 @@ API_KEMKES=http://sirs.kemkes.go.id/fo/index.php/
 ```php
 <?php
 // configurasi config (Support laravel 7 ke atas)
+config/vclaim.php
 return [
 	'api' => [
 		'endpoint'  => env('API_BPJS','ENDPOINT-KAMU'),
