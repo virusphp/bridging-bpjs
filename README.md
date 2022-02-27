@@ -67,7 +67,7 @@ Class SomeController
 
 	public function __construct()
 	{
-		$this->bridging = new BridgingBpjs();
+		$this->bridging = new BridgeVclaim();
 	}
 
 	// Example To use get Referensi diagnosa

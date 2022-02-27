@@ -26,7 +26,8 @@ class BridgingBpjsServiceProvider extends ServiceProvider
        include __DIR__.'../../routes.php';
        
        $this->publishes([
-            __DIR__.'../../../../../config/bpjs.php' => config_path('bpjs.php'),
+            __DIR__.'../../../../../config/vclaim.php' => config_path('vclaim.php'),
+            __DIR__.'../../../../../config/antrol.php' => config_path('antrol.php'),
         ], 'config');
     }
 }
