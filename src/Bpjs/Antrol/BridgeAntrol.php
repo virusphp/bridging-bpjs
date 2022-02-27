@@ -2,9 +2,10 @@
 
 namespace Vclaim\Bridging\Antrol;
 
+use Bpjs\Bridging\Bridge;
 use Bpjs\Bridging\Vclaim\ConfigAntrol;
 
-class BridgeAntrol
+class BridgeAntrol extends Bridge
 {
     protected $config;
     protected $response;
@@ -13,7 +14,7 @@ class BridgeAntrol
     {
         parent::__construct();
         $this->config = new ConfigAntrol;
-        $this->response = new ResponseVclaim;
+        $this->response = new ResponseAntrol;
     }
 
     public function getRequest($endpoint)
