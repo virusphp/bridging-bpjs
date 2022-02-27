@@ -34,25 +34,25 @@ Class ReferensiController
 	public function getPoliKontnrol($jnsKontrol, $nomor, $tglRencana)
 	{
 		$endpoint = 'RencanaKontrol/ListSpesialistik/JnsKontrol/'.$jnsKontrol. '/nomor/'.$nomor.'/TglRencanaKontrol/'.$tglRencana;
-		return $this->bridging->getRequestVclaim($endpoint);
+		return $this->bridging->getRequest($endpoint);
 	}
 
 	public function getListKontrol($bulan, $tahun, $nokartu, $filter)
 	{
 		$endpoint = "RencanaKontrol/ListRencanaKontrol/Bulan/{$bulan}/Tahun/{$tahun}/Nokartu/{$nokartu}/filter/{$filter}";
-		return $this->bridging->getRequestVclaim($endpoint);
+		return $this->bridging->getRequest($endpoint);
 	}
 
 	public function getDokter($pelayanan, $tglPelayanan, $spesialis)
 	{
 		$endpoint = 'referensi/dokter/pelayanan/'.$pelayanan.'/tglPelayanan/'.$tglPelayanan.'/Spesialis/'.$spesialis;
-		return $this->bridging->getRequestVclaim($endpoint);
+		return $this->bridging->getRequest($endpoint);
 	}
 
 	public function getListRujukan($tglmulai, $tglakhir)
 	{
 		$endpoint  = "Rujukan/Keluar/List/tglMulai/{$tglmulai}/tglAkhir/{$tglakhir}";
-		return $this->bridging->getRequestVclaim($endpoint);
+		return $this->bridging->getRequest($endpoint);
 	}
 
 	public function postSuratPerintah(Request $request)
@@ -72,38 +72,38 @@ Class ReferensiController
 	public function getCariSurat($nosurat)
 	{
 		$endpoint = 'RencanaKontrol/noSuratKontrol/'.$nosurat;
-		return $this->bridging->getRequestVclaim($endpoint);
+		return $this->bridging->getRequest($endpoint);
 	}
 
 	public function getDataSUrat($tglawal, $tglakhir, $tglkontrol)
 	{
 		$endpoint = 'RencanaKontrol/ListRencanaKontrol/tglAwal/'.$tglawal.'/tglAkhir/'.$tglakhir.'/filter/'.$tglkontrol;
-		return $this->bridging->getRequestVclaim($endpoint);
+		return $this->bridging->getRequest($endpoint);
 	}
 
 	public function getJadwalDokter($jnsKontrol, $kodePoli, $tglKontrol)
 	{
 		// dd($jnsKontrol,$kodePoli, $tglKontrol);
 		$endpoint = 'RencanaKontrol/JadwalPraktekDokter/JnsKontrol/'.$jnsKontrol.'/KdPoli/'.$kodePoli.'/TglRencanaKontrol/'.$tglKontrol;
-		return $this->bridging->getRequestVclaim($endpoint);
+		return $this->bridging->getRequest($endpoint);
 	}
 
 	public function cariSep($nosep)
 	{
 		$endpoint = "SEP/{$nosep}";
-		return $this->bridging->getRequestVclaim($endpoint);
+		return $this->bridging->getRequest($endpoint);
 	}
 
 	public function cariSuratKontrol($nosep)
 	{
 		$endpoint = "RencanaKontrol/noSuratKontrol/{$nosep}";
-		return $this->bridging->getRequestVclaim($endpoint);
+		return $this->bridging->getRequest($endpoint);
 	}
 
 	public function cariSepInternal($nosep)
 	{
 		$endpoint = "SEP/Internal/{$nosep}";
-		return $this->bridging->getRequestVclaim($endpoint);
+		return $this->bridging->getRequest($endpoint);
 	}
 
 	public function postSEP(Request $request)
@@ -147,19 +147,19 @@ Class ReferensiController
 	public function cariRujukan($rujukan)
 	{
 		$endpoint = "Rujukan/{$rujukan}";
-		return $this->bridging->getRequestVclaim($endpoint);
+		return $this->bridging->getRequest($endpoint);
 	}
 
 	public function cariRujukanRs($rujukan)
 	{
 		$endpoint = "Rujukan/RS/{$rujukan}";
-		return $this->bridging->getRequestVclaim($endpoint);
+		return $this->bridging->getRequest($endpoint);
 	}
 	
 	public function cariRujukanPeserta($nomor)
 	{
 		$endpoint = "Rujukan/Peserta/{$nomor}";
-		return $this->bridging->getRequestVclaim($endpoint);
+		return $this->bridging->getRequest($endpoint);
 	}
 
 	public function deleteRujukan(Request $request)
@@ -173,18 +173,18 @@ Class ReferensiController
 	{
 		// dd($nomor, $tglakhir, $tglakhir);
 		$endpoint = "monitoring/HistoriPelayanan/NoKartu/{$nomor}/tglMulai/{$tglmulai}/tglAkhir/{$tglakhir}";
-		return $this->bridging->getRequestVclaim($endpoint);
+		return $this->bridging->getRequest($endpoint);
 	}
 
 	public function cariRujukanListPcare($rujukan)
 	{
 		$endpoint = "Rujukan/List/Peserta/{$rujukan}";
-		return $this->bridging->getRequestVclaim($endpoint);
+		return $this->bridging->getRequest($endpoint);
 	}
 
 	public function jumlahSep($jnsRujukan, $noRujukan)
 	{
 		$endpoint = "Rujukan/JumlahSEP/{$jnsRujukan}/{$noRujukan}";
-		return $this->bridging->getRequestVclaim($endpoint);
+		return $this->bridging->getRequest($endpoint);
 	}
 }
