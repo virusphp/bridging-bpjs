@@ -108,7 +108,7 @@ Class SomeController
 
 #### 2022-02-26
 
-- v2.0.0 Release Mayor Refactoring all service
+- v2.0.0 Release Mayor Refactoring all service (New Service Antrol)
 
 #### 2022-01-29 - 2022-02-07
 
