@@ -5,21 +5,21 @@ namespace Bpjs\Bridging\Vclaim;
 use LZCompressor\LZString;
 use Bpjs\Bridging\GenerateBpjs;
 
-class ResponseVclaim
+class ResponseAntrol
 {
     public function responseVclaim($response, $key)
     {
         $result = json_decode($response);
-		if ($result->metaData->code == "200" && is_string($result->response)) {
-            return self::doMaping($result->metaData, $result->response, $key);
+		if ($result->metadata->code == "200" && is_string($result->response)) {
+            return self::doMaping($result->metadata, $result->response, $key);
         }
         return json_encode($result);
     }
 
-    public function doMaping($metaData, $response, $key)
+    public function doMaping($metadata, $response, $key)
     {
         $data = [
-            "metaData" => $metaData,
+            "metaData" => $metadata,
             "response" => json_decode($this->decompressed(GenerateBpjs::stringDecrypt($key, $response)))
         ];
 		return json_encode($data);

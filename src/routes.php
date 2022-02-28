@@ -11,96 +11,96 @@ use Bpjs\Bridging\ReferensiController;
 // 	return $generate->generateSignature(config("bpjs.api.consid"), config("bpjs.api.seckey"));
 // });
 
-Route::get('referensi/diagnosa/{kode}', function($kode){
-	$referensi = new ReferensiController();
-	$referensi = $referensi->getDiagnosa($kode);
-	return $referensi;
-});
-
-Route::get('referensi/dokter/pelayanan/{pelayanan}/tglpel/{tglpel}/spesialis/{kode}', function($pelayanan, $tglpel, $kode){
-	$referensi = new ReferensiController();
-	$referensi = $referensi->getDokter($pelayanan, $tglpel, $kode);
-	return $referensi;
-});
-
-Route::get('peserta/nokartu/{nokartu}/tglsep/{tglsep}', function($nokartu, $tglsep){
-	$referensi = new PesertaController();
-	$referensi = $referensi->getPeserta($nokartu, $tglsep);
-	return $referensi;
-});
-
-// Route::get('rencana/listpoli/jnskontrol/{jnsKontrol}/nomor/{nomor}/tglrencana/{tglRencana}', function($jnsKontrol, $nomor, $tglRencana) {
+// Route::get('referensi/diagnosa/{kode}', function($kode){
 // 	$referensi = new ReferensiController();
-// 	$referensi = $referensi->getPoliKontnrol($jnsKontrol, $nomor, $tglRencana);
+// 	$referensi = $referensi->getDiagnosa($kode);
 // 	return $referensi;
 // });
 
-Route::get('rencana/liskontrol/bulan/{bulan}/tahun/{tahun}/nokartu/{nokartu}/filer/{filter}', function($bulan, $tahun, $nokartu, $filter) {
-	$referensi = new ReferensiController();
-	$referensi = $referensi->getListKontrol($bulan, $tahun, $nokartu, $filter);
-	return $referensi;
-});
-
-Route::get('dpjp/pelayanan/{pelayanan}/tglpelayanan/{tglpelayanan}/spesialis/{spesialis}', function($pelayanan, $tglpelayanan, $spesialis) {
-	$referensi = new ReferensiController();
-	$referensi = $referensi->getDokter($pelayanan, $tglpelayanan, $spesialis);
-	return $referensi;
-});
-
-Route::get('rujukan/keluar/list/tglmulai/{tglmulai}/tglakhir/{tglakhir}', function($tglmulai, $tglakhir) {
-	$referensi = new ReferensiController();
-	$referensi = $referensi->getListRujukan($tglmulai, $tglakhir);
-	return $referensi;
-});
-
-
-// Route::get('kontrol/list/tglawal/{tglawal}/tglakhir/{tglakhir}/filter/{tglkontrol}', function($tglawal, $tglakhir, $tglkontrol) {
+// Route::get('referensi/dokter/pelayanan/{pelayanan}/tglpel/{tglpel}/spesialis/{kode}', function($pelayanan, $tglpel, $kode){
 // 	$referensi = new ReferensiController();
-// 	$referensi = $referensi->getDataSUrat($tglawal, $tglakhir, $tglkontrol);
+// 	$referensi = $referensi->getDokter($pelayanan, $tglpel, $kode);
 // 	return $referensi;
 // });
 
-// Route::get('kontrol/dokter/jnskontrol/{jnskontrol}/poli/{poli}/tglkontrol/{tglkontrol}', function($jnsKontrol, $kodePoli, $tglKontrol) {
-// 	$referensi = new ReferensiController();
-// 	$referensi = $referensi->getJadwalDokter($jnsKontrol, $kodePoli, $tglKontrol);
+// Route::get('peserta/nokartu/{nokartu}/tglsep/{tglsep}', function($nokartu, $tglsep){
+// 	$referensi = new PesertaController();
+// 	$referensi = $referensi->getPeserta($nokartu, $tglsep);
 // 	return $referensi;
 // });
 
-// Route::get('rencanakontrol/nosuratkontrol/{suratkontrol}', function($sep) {
+// // Route::get('rencana/listpoli/jnskontrol/{jnsKontrol}/nomor/{nomor}/tglrencana/{tglRencana}', function($jnsKontrol, $nomor, $tglRencana) {
+// // 	$referensi = new ReferensiController();
+// // 	$referensi = $referensi->getPoliKontnrol($jnsKontrol, $nomor, $tglRencana);
+// // 	return $referensi;
+// // });
+
+// Route::get('rencana/liskontrol/bulan/{bulan}/tahun/{tahun}/nokartu/{nokartu}/filer/{filter}', function($bulan, $tahun, $nokartu, $filter) {
 // 	$referensi = new ReferensiController();
-// 	$referensi = $referensi->cariSuratKontrol($sep);
+// 	$referensi = $referensi->getListKontrol($bulan, $tahun, $nokartu, $filter);
 // 	return $referensi;
 // });
 
-Route::get('sep/{sep}', function($sep) {
-	$referensi = new ReferensiController();
-	$referensi = $referensi->cariSep($sep);
-	return $referensi;
-});
+// Route::get('dpjp/pelayanan/{pelayanan}/tglpelayanan/{tglpelayanan}/spesialis/{spesialis}', function($pelayanan, $tglpelayanan, $spesialis) {
+// 	$referensi = new ReferensiController();
+// 	$referensi = $referensi->getDokter($pelayanan, $tglpelayanan, $spesialis);
+// 	return $referensi;
+// });
 
-Route::get('sep/internal/{sep}', function($sep) {
-	$referensi = new ReferensiController();
-	$referensi = $referensi->cariSepInternal($sep);
-	return $referensi;
-});
+// Route::get('rujukan/keluar/list/tglmulai/{tglmulai}/tglakhir/{tglakhir}', function($tglmulai, $tglakhir) {
+// 	$referensi = new ReferensiController();
+// 	$referensi = $referensi->getListRujukan($tglmulai, $tglakhir);
+// 	return $referensi;
+// });
 
-// Route::post('create/sep', function(Request $request) {
+
+// // Route::get('kontrol/list/tglawal/{tglawal}/tglakhir/{tglakhir}/filter/{tglkontrol}', function($tglawal, $tglakhir, $tglkontrol) {
+// // 	$referensi = new ReferensiController();
+// // 	$referensi = $referensi->getDataSUrat($tglawal, $tglakhir, $tglkontrol);
+// // 	return $referensi;
+// // });
+
+// // Route::get('kontrol/dokter/jnskontrol/{jnskontrol}/poli/{poli}/tglkontrol/{tglkontrol}', function($jnsKontrol, $kodePoli, $tglKontrol) {
+// // 	$referensi = new ReferensiController();
+// // 	$referensi = $referensi->getJadwalDokter($jnsKontrol, $kodePoli, $tglKontrol);
+// // 	return $referensi;
+// // });
+
+// // Route::get('rencanakontrol/nosuratkontrol/{suratkontrol}', function($sep) {
+// // 	$referensi = new ReferensiController();
+// // 	$referensi = $referensi->cariSuratKontrol($sep);
+// // 	return $referensi;
+// // });
+
+// Route::get('sep/{sep}', function($sep) {
+// 	$referensi = new ReferensiController();
+// 	$referensi = $referensi->cariSep($sep);
+// 	return $referensi;
+// });
+
+// Route::get('sep/internal/{sep}', function($sep) {
+// 	$referensi = new ReferensiController();
+// 	$referensi = $referensi->cariSepInternal($sep);
+// 	return $referensi;
+// });
+
+// // Route::post('create/sep', function(Request $request) {
+// // 	$referensi = new ReferensiController($request);
+// // 	$referensi = $referensi->postSEP($request);
+// // 	return $referensi;
+// // });
+
+// Route::post('delete/sep', function(Request $request) {
 // 	$referensi = new ReferensiController($request);
-// 	$referensi = $referensi->postSEP($request);
+// 	$referensi = $referensi->deleteSep($request);
 // 	return $referensi;
 // });
 
-Route::post('delete/sep', function(Request $request) {
-	$referensi = new ReferensiController($request);
-	$referensi = $referensi->deleteSep($request);
-	return $referensi;
-});
-
-Route::post('delete/rujukan', function(Request $request) {
-	$referensi = new ReferensiController($request);
-	$referensi = $referensi->deleteRujukan($request);
-	return $referensi;
-});
+// Route::post('delete/rujukan', function(Request $request) {
+// 	$referensi = new ReferensiController($request);
+// 	$referensi = $referensi->deleteRujukan($request);
+// 	return $referensi;
+// });
 
 // Route::post('delete/sepinternal', function(Request $request) {
 // 	$referensi = new ReferensiController($request);
