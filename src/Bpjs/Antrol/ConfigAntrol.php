@@ -1,6 +1,6 @@
 <?php
 
-namespace Bpjs\Bridging\Vclaim;
+namespace Bpjs\Bridging\Antrol;
 
 use Bpjs\Bridging\ManageService;
 use Bpjs\Bridging\GenerateBpjs;

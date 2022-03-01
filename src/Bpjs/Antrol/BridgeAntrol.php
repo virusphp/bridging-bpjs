@@ -1,6 +1,6 @@
 <?php
 
-namespace Vclaim\Bridging\Antrol;
+namespace Bpjs\Bridging\Antrol;
 
 use Bpjs\Bridging\Bridge;
 use Bpjs\Bridging\Vclaim\ConfigAntrol;

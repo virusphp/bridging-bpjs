@@ -1,6 +1,6 @@
 <?php
 
-namespace Bpjs\Bridging\Vclaim;
+namespace Bpjs\Bridging\Antrol;
 
 use LZCompressor\LZString;
 use Bpjs\Bridging\GenerateBpjs;
