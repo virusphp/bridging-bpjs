@@ -24,8 +24,6 @@ class ConfigVclaim extends ManageService
         $this->consId = config('vclaim.api.consid') ?? getenv('CONS_ID');
         $this->secretKey = config('vclaim.api.secretkey') ?? getenv('SECRET_KEY');
         $this->userKey = config('vclaim.api.userkey') ?? getenv('USER_KEY_VCLAIM');
-
-        $this->header = $this->setHeader();
     }
 
     public function setUrl()
@@ -78,13 +76,13 @@ class ConfigVclaim extends ManageService
 		];
 	}
 
-    public function keyDecrypt() 
+    public function keyDecrypt($timestamp) 
     {
-        return $this->setConsid().$this->setSecretKey().$this->header['X-timestamp'];
+        return $this->setConsid().$this->setSecretKey().$timestamp;
     }
 
-    public function setHeaders()
+    public function setHeaders($header)
     {
-        return array_merge($this->header, $this->setUrlEncode());
+        return array_merge($header, $this->setUrlEncode());
     }
 }

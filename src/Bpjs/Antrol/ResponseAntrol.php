@@ -7,7 +7,7 @@ use Bpjs\Bridging\GenerateBpjs;
 
 class ResponseAntrol
 {
-    public function responseVclaim($response, $key)
+    public function responseAntrol($response, $key)
     {
         $result = json_decode($response);
 		if ($result->metadata->code == "200" && is_string($result->response)) {
@@ -19,7 +19,7 @@ class ResponseAntrol
     public function doMaping($metadata, $response, $key)
     {
         $data = [
-            "metaData" => $metadata,
+            "metadata" => $metadata,
             "response" => json_decode($this->decompressed(GenerateBpjs::stringDecrypt($key, $response)))
         ];
 		return json_encode($data);
