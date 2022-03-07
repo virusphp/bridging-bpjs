@@ -3,8 +3,8 @@
 namespace Bpjs\Bridging\Antrol;
 
 use Bpjs\Bridging\Bridge;
-use Bpjs\Bridging\Vclaim\ConfigAntrol;
-use Bpjs\Bridging\Vclaim\ResponseAntrol;
+use Bpjs\Bridging\Antrol\ConfigAntrol;
+use Bpjs\Bridging\Antrol\ResponseAntrol;
 
 class BridgeAntrol extends Bridge
 {
