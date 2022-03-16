@@ -20,10 +20,10 @@ class ConfigAntrol extends ManageService
         $dotenv = Dotenv::createUnsafeImmutable(getcwd());
 		$dotenv->safeLoad();
 
-        $this->urlEndpoint = config('antrol.api.endpoint') ?? getenv('API_BPJS_ANTROL');
-        $this->consId = config('antrol.api.consid') ?? getenv('CONS_ID');
-        $this->secretKey = config('antrol.api.secretkey') ?? getenv('SECRET_KEY');
-        $this->userKey = config('antrol.api.userkey') ?? getenv('USER_KEY_ANTROL');
+        $this->urlEndpoint = getenv('API_BPJS_ANTROL');
+        $this->consId = getenv('CONS_ID');
+        $this->secretKey = getenv('SECRET_KEY');
+        $this->userKey = getenv('USER_KEY_ANTROL');
 
         $this->header = $this->setHeader();
     }

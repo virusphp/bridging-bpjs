@@ -20,10 +20,10 @@ class ConfigVclaim extends ManageService
         $dotenv = Dotenv::createUnsafeImmutable(getcwd());
 		$dotenv->safeLoad();
 
-        $this->urlEndpoint = config('vclaim.api.endpoint') ?? getenv('API_BPJS_VCLAIM');
-        $this->consId = config('vclaim.api.consid') ?? getenv('CONS_ID');
-        $this->secretKey = config('vclaim.api.secretkey') ?? getenv('SECRET_KEY');
-        $this->userKey = config('vclaim.api.userkey') ?? getenv('USER_KEY_VCLAIM');
+        $this->urlEndpoint = getenv('API_BPJS_VCLAIM');
+        $this->consId = getenv('CONS_ID');
+        $this->secretKey = getenv('SECRET_KEY');
+        $this->userKey = getenv('USER_KEY_VCLAIM');
     }
 
     public function setUrl()
