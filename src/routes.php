@@ -162,6 +162,12 @@ Route::get('mon/historipelayanan/nokartu/{nomor}/tglmulai/{tglmulai}/tglakhir/{t
 	return $referensi;
 });
 
+Route::get('dashboard/waktutunggu/tanggal/{tanggal}/waktu/{waktu}', function($tanggal, $waktu)  {
+	$referensi = new ReferensiController();
+	$referensi = $referensi->dashboardTanggal($tanggal, $waktu);
+	return $referensi;
+});
+
 Route::get('rujukan/jumlahsep/{jnsrujukan}/{norujukan}', function($jnsrujukan, $norujukan) {
 	$referensi = new ReferensiController();
 	$referensi = $referensi->jumlahSep($jnsrujukan, $norujukan);
