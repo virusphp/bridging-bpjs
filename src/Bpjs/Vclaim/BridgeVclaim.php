@@ -42,6 +42,7 @@ class BridgeVclaim extends Bridge
 
     public function deleteRequest($endpoint, $data)
     {
+        $data = file_get_contents("php://input");
         $result = $this->httpDelete($this->config->setUrl().$endpoint, $this->config->setHeaders($this->header), $data);
         $result = $this->response->responseVclaim($result, $this->config->keyDecrypt($this->header['X-timestamp']));
         return $result;
