@@ -25,6 +25,13 @@ class BridgeVclaim extends Bridge
         $result = $this->response->responseVclaim($result, $this->config->keyDecrypt($this->header['X-timestamp']));
         return $result;
     }
+
+    public function getRequestNew($endpoint)
+    {
+        $result = $this->httpGet($this->config->setUrl().$endpoint, $this->config->setHeaders($this->header));
+        $result = $this->response->responseVclaim($result, $this->config->keyDecrypt($this->header['X-timestamp']));
+        return $result;
+    }
     
     public function postRequest($endpoint, $data)
     {
