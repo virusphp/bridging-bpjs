@@ -3,6 +3,7 @@
 namespace Bpjs\Bridging;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 
 class Bridge
 {
@@ -23,10 +24,8 @@ class Bridge
             $result = $response->getBody()->getContents();
             return $result;
         } catch (RequestException $e) {
-            $result = $e->getRequest();
-            if ($e->hasResponse()) {
-                $result = $e->getResponse();
-            }
+            $result = $this->responseError($e);
+            return $result;
         } 
     } 
 
@@ -37,10 +36,8 @@ class Bridge
 			$result = $response->getBody()->getContents();
             return $result;
         } catch (RequestException $e) {
-            $result =$e->getRequest();
-            if ($e->hasResponse()) {
-                $result = $e->getResponse();
-            }
+            $result = $this->responseError($e);
+            return $result;
         } 
     } 
 
@@ -51,10 +48,8 @@ class Bridge
 			$result = $response->getBody()->getContents();
             return $result;
         } catch (RequestException $e) {
-            $result =$e->getRequest();
-            if ($e->hasResponse()) {
-                $result = $e->getResponse();
-            }
+            $result = $this->responseError($e);
+            return $result;
         } 
     }
 
@@ -65,10 +60,21 @@ class Bridge
 			$result = $response->getBody()->getContents();
             return $result;
         } catch (RequestException $e) {
-            $result =$e->getRequest();
-            if ($e->hasResponse()) {
-                $result = $e->getResponse();
-            }
+            $result = $this->responseError($e);
+            return $result;
         } 
+    }
+
+    protected function responseError($error)
+    {
+        $result = [
+            'metaData' => [
+                'code' => $error->getCode(),
+                'message' => $error->getMessage()
+            ],
+            'response' => null
+        ];
+
+        return json_encode($result);
     }
 }
