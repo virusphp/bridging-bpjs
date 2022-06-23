@@ -1,13 +1,12 @@
 # Service-Bridging
 
-Service-bridging adalah sebuah packeges di desain untuk mempermudah pengguna framework php untuk melakukan generate signature maupun token
-untuk akses ke service bpjs baik versi 1 maupun versi 2 yang akan datang, semoga packages ini dapat membantu teman teman dalam melakukan develop terhadap perkembangan service bpjs kesehatan
+Service-bridging adalah sebuah package yang di desain untuk mempermudah pengguna framework php untuk melakukan generate signature maupun token untuk akses ke service BPJS baik versi 1 maupun versi 2 yang akan datang, semoga package ini dapat membantu teman-teman dalam melakukan develop terhadap perkembangan service BPJS kesehatan
 
 ## FEATURE
 
-- Custome Url
+- Custom Url
 - Generate Signature
-- Generate Timestamp Bpjs
+- Generate Timestamp BPJS
 - Generate keyString
 - Decrypt String
 - Decompress with (Lz-String)
@@ -29,7 +28,7 @@ php artisan vendor:publish --provider="Vclaim\Bridging\BridgingBpjsServiceProvid
 ## Usage
 
 ```env
-//Confirasi .env bpjs
+//Confirasi .env BPJS
 CONS_ID=xxxxx
 SECRET_KEY=xxxX
 
