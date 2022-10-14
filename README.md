@@ -126,7 +126,6 @@ https://saweria.co/setsuga
 #### 2022-10-07
 
 - v2.0.9 fixed delete method for sep, surat kontrol, and rujukan
--
 
 #### 2022-02-26
 

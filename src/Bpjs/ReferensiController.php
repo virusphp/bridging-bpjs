@@ -34,6 +34,13 @@ Class ReferensiController
 		return $this->bridging->getRequest($endpoint);
 	}
 
+	public function getPoli($kode)
+	{
+		$endpoint = 'referensi/poli/'. $kode;
+		return $this->bridging->getRequest($endpoint);
+	}
+
+
 	public function getPoliKontnrol($jnsKontrol, $nomor, $tglRencana)
 	{
 		$endpoint = 'RencanaKontrol/ListSpesialistik/JnsKontrol/'.$jnsKontrol. '/nomor/'.$nomor.'/TglRencanaKontrol/'.$tglRencana;

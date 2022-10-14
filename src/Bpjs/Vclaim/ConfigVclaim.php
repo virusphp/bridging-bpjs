@@ -69,6 +69,7 @@ class ConfigVclaim extends ManageService
     public function setHeader()
 	{
 		return [
+            'Accept' => 'application/json',
 			'X-cons-id'   => $this->setConsid(),
 			'X-timestamp' => $this->setTimestamp(),
 			'X-signature' => $this->setSignature(),

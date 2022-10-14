@@ -17,6 +17,12 @@ Route::get('referensi/diagnosa/{kode}', function($kode){
 	return $referensi;
 });
 
+Route::get('referensi/poli/{kode}', function($kode){
+	$referensi = new ReferensiController();
+	$referensi = $referensi->getPoli($kode);
+	return $referensi;
+});
+
 Route::get('referensi/dokter/pelayanan/{pelayanan}/tglpel/{tglpel}/spesialis/{kode}', function($pelayanan, $tglpel, $kode){
 	$referensi = new ReferensiController();
 	$referensi = $referensi->getDokter($pelayanan, $tglpel, $kode);
