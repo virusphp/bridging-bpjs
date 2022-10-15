@@ -52,6 +52,20 @@ Class ReferensiController
 		return $this->antrol->getRequest($endpoint);
 	}
 
+	public function postAntrian(Request $request)
+	{
+		$endpoint = 'antrean/add';
+		$data = $request->all();
+		return $this->antrol->postRequest($endpoint, $data, "POST");
+	}
+
+	public function updateAntrian(Request $request)
+	{
+		$endpoint = 'antrean/updatewaktu';
+		$data = $request->all();
+		return $this->antrol->postRequest($endpoint, $data, "POST");
+	}
+
 	public function getPoliKontnrol($jnsKontrol, $nomor, $tglRencana)
 	{
 		$endpoint = 'RencanaKontrol/ListSpesialistik/JnsKontrol/'.$jnsKontrol. '/nomor/'.$nomor.'/TglRencanaKontrol/'.$tglRencana;

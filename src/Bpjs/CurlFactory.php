@@ -30,7 +30,7 @@ class CurlFactory
 		$ch = curl_init($endpoint);
 	 	curl_setopt_array($ch, $optf);
 		$result = curl_exec($ch);
-		// $info = curl_getinfo($ch);
+		$info = curl_getinfo($ch);
 		curl_close($ch);
 
 		return $result;

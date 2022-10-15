@@ -29,12 +29,32 @@ class BridgeAntrol extends CurlFactory
         return $result;
     }
 
-    // public function getRequest($endpoint)
-    // {
-    //     $result = $this->httpGet($this->config->setUrl().$endpoint, $this->header);
-    //     $result = $this->response->responseAntrol($result, $this->config->keyDecrypt($this->header['X-timestamp']));
-    //     return $result;
-    // }
+    public function postRequest($endpoint, $data)
+    {
+        $result = $this->request($this->config->setUrl().$endpoint, $this->header, "POST", $data);
+        $result = $this->response->responseAntrol($result, $this->config->keyDecrypt($this->header['X-timestamp']));
+        return $result;
+    }
+
+    public function putRequest($endpoint, $data)
+    {
+        $result = $this->request($this->config->setUrl().$endpoint, $this->header, "PUT", $data);
+        $result = $this->response->responseAntrol($result,  $this->config->keyDecrypt($this->header['X-timestamp']));
+        return $result;
+    }
+
+    public function deleteRequest($endpoint, $data)
+    {
+        $result = $this->request($this->config->setUrl().$endpoint, $this->header, "DELETE", $data);
+        $result = $this->response->responseAntrol($result, $this->config->keyDecrypt($this->header['X-timestamp']));
+        return $result;
+    }
+
+    public function deleteResponseNoDecrypt($endpoint, $data)
+    {
+        $result = $this->request($this->config->setUrl().$endpoint, $this->header, "DELETE", $data);
+        return $result;
+    }
 
     // public function getRequest($endpoint)
     // {
@@ -42,7 +62,7 @@ class BridgeAntrol extends CurlFactory
     //     $result = $this->response->responseAntrol($result, $this->config->keyDecrypt($this->header['X-timestamp']));
     //     return $result;
     // }
-    
+
     // public function postRequest($endpoint, $data)
     // {
     //     $result = $this->httpPost($this->config->setUrl().$endpoint, $this->config->setHeaders($this->header), $data);

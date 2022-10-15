@@ -35,6 +35,18 @@ Route::get('ref/dokter', function() {
 	return $referensi;
 });
 
+Route::post('antrean/add', function(Request $request) {
+	$referensi = new ReferensiController($request);;
+	$referensi = $referensi->postAntrian($request);
+	return $referensi;
+});
+
+Route::post('antrean/updatewaktu', function(Request $request) {
+	$referensi = new ReferensiController($request);;
+	$referensi = $referensi->updateAntrian($request);
+	return $referensi;
+});
+
 Route::get('referensi/dokter/pelayanan/{pelayanan}/tglpel/{tglpel}/spesialis/{kode}', function($pelayanan, $tglpel, $kode){
 	$referensi = new ReferensiController();
 	$referensi = $referensi->getDokter($pelayanan, $tglpel, $kode);
