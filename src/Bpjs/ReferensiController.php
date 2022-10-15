@@ -40,6 +40,17 @@ Class ReferensiController
 		return $this->bridging->getRequest($endpoint);
 	}
 
+	public function getPoliAntrol()
+	{
+		$endpoint = 'ref/poli';
+		return $this->antrol->getRequest($endpoint);
+	}
+
+	public function getDokterAntrol()
+	{
+		$endpoint = 'ref/dokter';
+		return $this->antrol->getRequest($endpoint);
+	}
 
 	public function getPoliKontnrol($jnsKontrol, $nomor, $tglRencana)
 	{

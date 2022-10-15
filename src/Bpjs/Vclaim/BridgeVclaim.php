@@ -56,6 +56,11 @@ class BridgeVclaim extends CurlFactory
         return $result;
     }
 
+    public function deleteResponseNoDecrypt($endpoint, $data)
+    {
+        $result = $this->request($this->config->setUrl().$endpoint, $this->header, "DELETE", $data);
+        return $result;
+    }
 
     // public function getRequest($endpoint)
     // {

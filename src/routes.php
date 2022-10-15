@@ -23,6 +23,18 @@ Route::get('referensi/poli/{kode}', function($kode){
 	return $referensi;
 });
 
+Route::get('ref/poli', function() {
+	$referensi = new ReferensiController();;
+	$referensi = $referensi->getPoliAntrol();
+	return $referensi;
+});
+
+Route::get('ref/dokter', function() {
+	$referensi = new ReferensiController();;
+	$referensi = $referensi->getDokterAntrol();
+	return $referensi;
+});
+
 Route::get('referensi/dokter/pelayanan/{pelayanan}/tglpel/{tglpel}/spesialis/{kode}', function($pelayanan, $tglpel, $kode){
 	$referensi = new ReferensiController();
 	$referensi = $referensi->getDokter($pelayanan, $tglpel, $kode);
