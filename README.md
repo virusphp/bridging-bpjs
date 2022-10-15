@@ -123,6 +123,10 @@ https://saweria.co/setsuga
 
 # Changelog
 
+#### 2022-10-15
+
+- v2.0.9 Refactoring Guzzle to curl and replace all guzzle
+
 #### 2022-10-07
 
 - v2.0.9 fixed delete method for sep, surat kontrol, and rujukan
