@@ -123,6 +123,11 @@ https://saweria.co/setsuga
 
 # Changelog
 
+#### 2022-11-26
+
+- v2.1.1 Fixed bug duplication encode string
+-
+
 #### 2022-10-15
 
 - v2.0.9 Refactoring Guzzle to curl and replace all guzzle
