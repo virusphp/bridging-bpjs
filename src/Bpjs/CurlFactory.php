@@ -21,10 +21,10 @@ class CurlFactory
 
 		if (!empty($method)) {
 			$optf[CURLOPT_CUSTOMREQUEST] = $method;
-            $optf[CURLOPT_POSTFIELDS] = json_encode($payload);
-            $optf[CURLOPT_HTTPHEADER][] = 'Application/x-www-form-urlencoded';
+            $optf[CURLOPT_POSTFIELDS] = $payload;
+            $optf[CURLOPT_HTTPHEADER][] = 'Content-Type: Application/x-www-form-urlencoded';
 		} else {
-			$optf[CURLOPT_HTTPHEADER][] = 'Application/json';
+			$optf[CURLOPT_HTTPHEADER][] = 'Content-Type: Application/json';
 		}
 
 		$ch = curl_init($endpoint);
