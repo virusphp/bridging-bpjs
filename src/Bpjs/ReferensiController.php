@@ -3,6 +3,7 @@
 namespace Bpjs\Bridging;
 
 use Bpjs\Bridging\Antrol\BridgeAntrol;
+use Bpjs\Bridging\Icare\BridgeIcare;
 use Bpjs\Bridging\Vclaim\BridgeVclaim;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -11,6 +12,7 @@ Class ReferensiController
 	// use Bpjs;	
 	protected $bridging;
 	protected $antrol;
+	protected $icare;
 	/**
 	 * default Request example 
 	 * Result Service Bpjs Referensi
@@ -26,6 +28,7 @@ Class ReferensiController
 	{
 		$this->bridging = new BridgeVclaim();
 		$this->antrol = new BridgeAntrol();
+		$this->icare = new BridgeIcare;
 	}
 
 	public function getDiagnosa($kode)
@@ -227,5 +230,14 @@ Class ReferensiController
 	{
 		$endpoint = "dashboard/waktutunggu/tanggal/{$tanggal}/waktu/{$waktu}";
 		return $this->antrol->getRequest($endpoint);
+	}
+
+	public function getHistoryPelayanan($nokartu, $kodedokter)
+	{
+		$data['param'] = $nokartu;
+		$data['kodedokter'] = (int)$kodedokter;
+		$data = json_encode($data);
+		$endpoint = "api/rs/validate";
+		return $this->icare->postRequest($endpoint, $data);
 	}
 }

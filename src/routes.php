@@ -204,11 +204,11 @@ use Bpjs\Bridging\ReferensiController;
 // 	return $referensi;
 // });
 
-// // Route::get('rujukan/list/peserta/{peserta}', function($rujukan) {
-// // 	$referensi = new ReferensiController();
-// // 	$referensi = $referensi->cariRujukanListPcare($rujukan);
-// // 	return $referensi;
-// // });
+// Route::get('rujukan/list/peserta/{peserta}', function($rujukan) {
+// 	$referensi = new ReferensiController();
+// 	$referensi = $referensi->cariRujukanListPcare($rujukan);
+// 	return $referensi;
+// });
 
 // // Route::get('fasyankesx', function() {
 // // 	dd("KOK GAK SAMPE SINI");
@@ -216,3 +216,13 @@ use Bpjs\Bridging\ReferensiController;
 // // 	// $tempattidur = $tempattidur->getTempatTidur();
 // // 	// return $tempattidur;
 // // });
+
+Route::get('helo', function() {
+	echo "HELO HELO HELO";
+});
+
+Route::get('histori/pelayanan/peserta/{nokartu}/{kodedokter}', function($nokartu, $kodedokter) {
+	$referensi = new ReferensiController();
+	$referensi = $referensi->getHistoryPelayanan($nokartu, $kodedokter);
+	return $referensi;
+});

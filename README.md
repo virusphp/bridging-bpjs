@@ -28,20 +28,23 @@ php artisan vendor:publish --provider="Vclaim\Bridging\BridgingBpjsServiceProvid
 ## Usage
 
 ```env
-//Confirasi .env BPJS
+#Confirasi .env BPJS
 CONS_ID=xxxxx
 SECRET_KEY=xxxX
 
-// Config untuk Vclaim BPJS
-API_BPJS_VCLAIM=https://apijkn-dev.bpjs-kesehatan.go.id/vclaim-rest-dev/
+#Config untuk Vclaim BPJS
+API_BPJS_VCLAIM=https://apijkn.bpjs-kesehatan.go.id/vclaim-rest-dev/
 USER_KEY_VCLAIM=xxxx
 
-// Config untuk Antrol BPJS
-API_BPJS_ANTROL=https://apijkn-dev.bpjs-kesehatan.go.id/antreanrs_dev/
+#Config untuk Vclaim BPJS
+API_BPJS_ICARE=https://apijkn.bpjs-kesehatan.go.id/ihs_dev/
+
+#Config untuk Antrol BPJS
+API_BPJS_ANTROL=https://apijkn.bpjs-kesehatan.go.id/antreanrs_dev/
 USER_KEY_ANTROL=xxxx
 
 
-//Configurasi .env untuk sirs kemkes
+##Configurasi .env untuk sirs kemkes
 USER_ID=xxxx
 PASS_ID=xxxx
 API_KEMKES=http://sirs.kemkes.go.id/fo/index.php/
@@ -89,6 +92,39 @@ Class SomeController
 
 ```php
 <?php
+// Example Controller bridging to Vclaim BPJS  (Laravel 7 ke atas)
+use Bpjs\Bridging\Icare\BridgeIcare;
+use Illuminate\Http\Request;
+
+Class SomeController
+{
+	protected $bridging;
+
+	public function __construct()
+	{
+		$this->bridging = new BridgeIcare();
+	}
+
+	// Example To use get Referensi diagnosa
+	// Name of Method example
+	public function getHistory(Request $reqeust)
+	{
+		$data = $this->handleRequest($reqeust);
+		$endpoint = 'api/rs/validate';
+		return $this->bridging->postRequest($endpoint, $data);
+	}
+
+	protected function handleRequest($request)
+	{
+		$data['param'] = $request->nomor_kartu;
+		$data['kodedokter'] = $request->kode_dokter;
+		return json_encode($data);
+	}
+}
+```
+
+```php
+<?php
 // Example Controller bridging to SIRS Kemkes  (Laravel 7 ke atas)
 use Kemkes\Bridging\BridgingKemkes;
 
@@ -111,9 +147,9 @@ Class SomeController
 }
 ```
 
-## Channel
+## CHANEL YOUTUBE
 
-KLIK UNTUK SUPORT
+KLIK TONTON UNTUK SUPORT (LIKE DAN KOMEN)
 
 [![Watch the video](https://yt3.ggpht.com/ytc/AMLnZu8mCU3GUNwlmATLo2gLb0K_jaWjahlc_qmbRxEl=s88-c-k-c0x00ffffff-no-rj)](https://www.youtube.com/watch?v=Gq8-YOnsR-k&t=257s)
 
@@ -123,10 +159,13 @@ https://saweria.co/setsuga
 
 # Changelog
 
+#### 2023-09-09
+
+- v2.1.2 Add new fitur briding I-care
+
 #### 2022-11-26
 
 - v2.1.1 Fixed bug duplication encode string
--
 
 #### 2022-10-15
 
@@ -183,27 +222,3 @@ https://saweria.co/setsuga
 ### 2021-09-19
 
 - v0.6-beta Refactor and new fitur bridging kemkes
-
-### 2021-09-15
-
-- v0.5-beta Refactor and update documentation
-
-### 2021-09-15
-
-- v0.2-beta Refactor code and add documentation readme
-
-### 2021-09-14
-
-- v0.1-beta Upgraded codebase to be compatible to PHP 8.
-
-### 2021-09-14
-
-- Added v0.1-beta to packagist/composer virusphp/service-bridging
-
-### 2021-09-14
-
-- Using the Guzzle and Lz-string repositories (guzzlehttp/guzzle) and (nullpunkt/lz-string-php)
-
-### 2021-09-14
-
-- Overhaul and refactor generate signature service BPJS by virusphp

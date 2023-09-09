@@ -31,6 +31,40 @@ class CurlFactory
 	 	curl_setopt_array($ch, $optf);
 		$result = curl_exec($ch);
 		$info = curl_getinfo($ch);
+		// dd($info);
+		curl_close($ch);
+
+		return $result;
+	}
+
+	public function requestIcare($endpoint, $headers, $method = "", $payload = "")
+	{
+		$headers = $this->setHeader($headers);
+
+		$optf = [
+ 			CURLOPT_VERBOSE => true,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_SSL_VERIFYHOST => false,
+			CURLOPT_TIMEOUT => 5,
+			CURLOPT_CONNECTTIMEOUT => 5,
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_HTTPHEADER => $headers
+		];
+
+		if (!empty($method)) {
+			$optf[CURLOPT_CUSTOMREQUEST] = $method;
+            $optf[CURLOPT_POSTFIELDS] = $payload;
+            $optf[CURLOPT_HTTPHEADER][] = 'Content-Type: Application/json';
+		} else {
+			$optf[CURLOPT_HTTPHEADER][] = 'Content-Type: Application/json';
+		}
+
+		$ch = curl_init($endpoint);
+	 	curl_setopt_array($ch, $optf);
+		$result = curl_exec($ch);
+		$info = curl_getinfo($ch);
+		// dd($info);
 		curl_close($ch);
 
 		return $result;
