@@ -44,7 +44,7 @@ API_BPJS_ANTROL=https://apijkn-dev.bpjs-kesehatan.go.id/antreanrs_dev/
 USER_KEY_ANTROL=xxxx
 
 #Config untuk Aplicares BPJS
-API_BPJS_APLICARE=https://new-api.bpjs-kesehatan.go.id/aplicaresws/
+API_BPJS_APLICARE=https://new-api.bpjs-kesehatan.go.id/aplicaresws/rest/
 
 
 
