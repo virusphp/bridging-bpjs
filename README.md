@@ -33,15 +33,19 @@ CONS_ID=xxxxx
 SECRET_KEY=xxxX
 
 #Config untuk Vclaim BPJS
-API_BPJS_VCLAIM=https://apijkn.bpjs-kesehatan.go.id/vclaim-rest-dev/
+API_BPJS_VCLAIM=https://apijkn-dev.bpjs-kesehatan.go.id/vclaim-rest-dev/
 USER_KEY_VCLAIM=xxxx
 
-#Config untuk Vclaim BPJS
-API_BPJS_ICARE=https://apijkn.bpjs-kesehatan.go.id/ihs_dev/
+#Config untuk Icare BPJS
+API_BPJS_ICARE=https://apijkn-dev.bpjs-kesehatan.go.id/ihs_dev/
 
 #Config untuk Antrol BPJS
-API_BPJS_ANTROL=https://apijkn.bpjs-kesehatan.go.id/antreanrs_dev/
+API_BPJS_ANTROL=https://apijkn-dev.bpjs-kesehatan.go.id/antreanrs_dev/
 USER_KEY_ANTROL=xxxx
+
+#Config untuk Aplicares BPJS
+API_BPJS_APLICARE=https://new-api.bpjs-kesehatan.go.id/aplicaresws/
+
 
 
 ##Configurasi .env untuk sirs kemkes
@@ -92,7 +96,7 @@ Class SomeController
 
 ```php
 <?php
-// Example Controller bridging to Vclaim BPJS  (Laravel 7 ke atas)
+// Example Controller bridging to Icare BPJS  (Laravel 7 ke atas)
 use Bpjs\Bridging\Icare\BridgeIcare;
 use Illuminate\Http\Request;
 
@@ -105,7 +109,7 @@ Class SomeController
 		$this->bridging = new BridgeIcare();
 	}
 
-	// Example To use get Referensi diagnosa
+	// Example To use get History
 	// Name of Method example
 	public function getHistory(Request $reqeust)
 	{
@@ -119,6 +123,31 @@ Class SomeController
 		$data['param'] = $request->nomor_kartu;
 		$data['kodedokter'] = $request->kode_dokter;
 		return json_encode($data);
+	}
+}
+```
+
+```php
+<?php
+// Example Controller bridging to Aplicare BPJS  (Laravel 7 ke atas)
+use Bpjs\Bridging\Icare\BridgeAPlicares;
+use Illuminate\Http\Request;
+
+Class SomeController
+{
+	protected $bridging;
+
+	public function __construct()
+	{
+		$this->bridging = new BridgeAplicares();
+	}
+
+	// Example To use get Referensi Kelas
+	// Name of Method example
+	public function getReferensiKelas()
+	{
+		$endpoint = 'ref/kelas';
+		return $this->bridging->getRequest($endpoint);
 	}
 }
 ```
