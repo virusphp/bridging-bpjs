@@ -4,7 +4,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Vclaim\Bridging\GenerateBpjs;
 use Vclaim\Bridging\PesertaController;
 use Bpjs\Bridging\ReferensiController;
-
+use Kemkes\Bridging\TempatTidurController;
 
 // Route::get('sample', function() {
 // 	$generate = new GenerateBpjs;
@@ -204,24 +204,31 @@ use Bpjs\Bridging\ReferensiController;
 // 	return $referensi;
 // });
 
-// Route::get('rujukan/list/peserta/{peserta}', function($rujukan) {
-// 	$referensi = new ReferensiController();
-// 	$referensi = $referensi->cariRujukanListPcare($rujukan);
-// 	return $referensi;
-// });
+Route::get('rujukan/list/peserta/{peserta}', function ($rujukan) {
+	$referensi = new ReferensiController();
+	$referensi = $referensi->cariRujukanListPcare($rujukan);
+	return $referensi;
+});
 
-// // Route::get('fasyankesx', function() {
-// // 	dd("KOK GAK SAMPE SINI");
-// // 	// $tempattidur = new TempatTidurController();
-// // 	// $tempattidur = $tempattidur->getTempatTidur();
-// // 	// return $tempattidur;
-// // });
+Route::get('fasyankes', function () {
+	// dd("KOK GAK SAMPE SINI");
+	$tempattidur = new TempatTidurController();
+	$tempattidur = $tempattidur->getTempatTidur();
+	return $tempattidur;
+});
 
-Route::get('helo', function() {
+Route::get('fasyankes/referensi', function () {
+	// dd("KOK GAK SAMPE SINI");
+	$tempattidur = new TempatTidurController();
+	$tempattidur = $tempattidur->getReferensi();
+	return $tempattidur;
+});
+
+Route::get('helo', function () {
 	echo "HELO HELO HELO";
 });
 
-Route::get('histori/pelayanan/peserta/{nokartu}/{kodedokter}', function($nokartu, $kodedokter) {
+Route::get('histori/pelayanan/peserta/{nokartu}/{kodedokter}', function ($nokartu, $kodedokter) {
 	$referensi = new ReferensiController();
 	$referensi = $referensi->getHistoryPelayanan($nokartu, $kodedokter);
 	return $referensi;

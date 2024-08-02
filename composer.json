@@ -17,7 +17,7 @@
   "autoload": {
     "psr-4": {
       "Bpjs\\Bridging\\": "src/Bpjs/",
-      "Kemkes\\Bridging\\": "src/kemkes"
+      "Kemkes\\Bridging\\": "src/Kemkes/"
     }
   },
   "config": {

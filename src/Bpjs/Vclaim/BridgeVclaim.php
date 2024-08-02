@@ -14,7 +14,6 @@ class BridgeVclaim extends CurlFactory
 
     public function __construct()
     {
-        // parent::__construct();
         $this->config = new ConfigVclaim;
         $this->response = new ResponseVclaim;
         $this->header = $this->config->setHeader();

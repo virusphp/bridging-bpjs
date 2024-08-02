@@ -47,10 +47,9 @@ USER_KEY_ANTROL=xxxx
 API_BPJS_APLICARE=https://new-api.bpjs-kesehatan.go.id/aplicaresws/rest/
 
 
-
 ##Configurasi .env untuk sirs kemkes
-USER_ID=xxxx
-PASS_ID=xxxx
+USER_SIRS=xxxx
+PASS_SIRS=xxxx
 API_KEMKES=http://sirs.kemkes.go.id/fo/index.php/
 
 ```
@@ -155,24 +154,25 @@ Class SomeController
 ```php
 <?php
 // Example Controller bridging to SIRS Kemkes  (Laravel 7 ke atas)
-use Kemkes\Bridging\BridgingKemkes;
+use Kemkes\Bridging\Sirs\BridgeSirs;
 
 Class SomeController
 {
-	protected $bridging;
+   	protected $bridging;
 
-	public function __construct()
-	{
-		$this->bridging = new BridgingKemkes();
-	}
+    public function __construct()
+    {
+        $this->bridging = new BridgeSirs;
+    }
 
-	// Example To use get Referensi diagnosa
+	// Example To use get list Tempat tidur
 	// Name of Method example
-	public function getFasyankes($kode)
-	{
-		$endpoint = 'Fasyankes'. $kode;
-		return $this->bridging->getRequest($endpoint);
-	}
+	 public function getTempatTidur()
+    {
+        $url = 'Fasyankes';
+        $tempattidur = $this->bridging->getRequest($url);
+        return $tempattidur;
+    }
 }
 ```
 
@@ -193,66 +193,6 @@ KLIK TONTON UNTUK SUPORT (LIKE DAN KOMEN)
 
 # Changelog
 
-#### 2023-09-09
+#### 2024-08-02
 
-- v2.1.2 Add new fitur briding I-care
-
-#### 2022-11-26
-
-- v2.1.1 Fixed bug duplication encode string
-
-#### 2022-10-15
-
-- v2.0.9 Refactoring Guzzle to curl and replace all guzzle
-
-#### 2022-10-07
-
-- v2.0.9 fixed delete method for sep, surat kontrol, and rujukan
-
-#### 2022-02-26
-
-- v2.0.0 Release Mayor Refactoring all service (New Service Antrol)
-
-#### 2022-01-29 - 2022-02-07
-
-- v1.3.7 add support use to native php
-
-#### 2022-01-25
-
-- v1.3.4 bug response antrol not same vclaim and add response antrol
-
-#### 2022-01-25
-
-- v1.3.2 and v.13.3 fix bug response and add support php version 8
-
-#### 2022-01-12
-
-- v1.3.1 fix bug response json to encode
-
-#### 2022-01-04
-
-- v1.3 fix bug and single generate timestamp to open key
-
-#### 2021-12-31
-
-- v1.2 fixed bug minor
-
-#### 2021-12-28
-
-- v1.1 fixed bug minor
-
-### 2021-12-27
-
-- v1.0 Add user_key to bridging versi 2 and fix bug
-
-### 2021-11-22
-
-- v0.8-beta fix bug minor
-
-### 2021-09-19
-
-- v0.7-beta fix bug minor both briding old and new version
-
-### 2021-09-19
-
-- v0.6-beta Refactor and new fitur bridging kemkes
+- v2.1.4 Add new fitur briding Sirs update

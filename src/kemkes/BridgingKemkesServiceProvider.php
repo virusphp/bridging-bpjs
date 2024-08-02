@@ -23,10 +23,10 @@ class BridgingKemkesServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-       include __DIR__.'../../routes.php';
-       
-       $this->publishes([
-            __DIR__.'../../../../config/kemkes.php' => config_path('kemkes.php'),
+        include __DIR__ . '../../routes.php';
+
+        $this->publishes([
+            __DIR__ . '../../../config/kemkes.php' => config_path('kemkes.php'),
         ], 'config');
     }
 }
