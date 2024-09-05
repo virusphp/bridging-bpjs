@@ -182,10 +182,6 @@ KLIK TONTON UNTUK SUPORT (LIKE DAN KOMEN)
 
 [![Watch the video](https://yt3.ggpht.com/ytc/AMLnZu8mCU3GUNwlmATLo2gLb0K_jaWjahlc_qmbRxEl=s88-c-k-c0x00ffffff-no-rj)](https://www.youtube.com/watch?v=Gq8-YOnsR-k&t=257s)
 
-## DONASI
-
-- Saweria : https://saweria.co/setsuga
-
 ## CONTACT
 
 - 082220801333
