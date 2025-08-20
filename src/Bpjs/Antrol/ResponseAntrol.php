@@ -10,7 +10,7 @@ class ResponseAntrol
     public function responseAntrol($response, $key)
     {
         $result = json_decode($response);
-		if (($result->metadata->code == "200" || $result->metadata->code = "1") && isset($result->response) && is_string($result->response)) {
+		if (($result->metadata->code == "200" || $result->metadata->code == "1") && isset($result->response) && is_string($result->response)) {
             return self::doMaping($result->metadata, $result->response, $key);
         }
         return json_encode($result);
