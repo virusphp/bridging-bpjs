@@ -20,10 +20,10 @@ class ConfigAntrol extends ManageService
         $dotenv = Dotenv::createImmutable(base_path());
         $dotenv->load();
 
-        $this->urlEndpoint = $_ENV['API_BPJS_VCLAIM'] ?? null;
+        $this->urlEndpoint = $_ENV['API_BPJS_ANTROL'] ?? null;
         $this->consId = $_ENV['CONS_ID'] ?? null;
         $this->secretKey = $_ENV['SECRET_KEY'] ?? null;
-        $this->userKey = $_ENV['USER_KEY_VCLAIM'] ?? null;
+        $this->userKey = $_ENV['USER_KEY_ANTROL'] ?? null;
 
         $this->header = $this->setHeader();
     }
